@@ -1,0 +1,72 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/json/schema-3",
+    "title": "Cinemas and countries hierarchy",
+    "type": "object",
+    "additionalProperties": false,
+
+    "properties": {
+        "@context": {
+            "type": ["object", "string"]
+        },
+        "countries": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Country"}, 
+            "minItems": 3
+        },
+        "cinemas": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Cinema"}, 
+            "minItems": 3
+        }
+    },
+
+    "required": [
+        "countries",
+        "cinemas"
+    ],
+
+    "definitions": {
+        "LocalizedString": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "value": { "type": "string"},
+                "lang": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z-]+$"
+                }
+            },
+            "required": ["value"]
+        },
+
+        "Country": {
+            "type": "object", 
+            "additionalProperties": false,
+            "properties": {
+                "id": { "type": "string"},
+                "name": {"$ref": "#/definitions/LocalizedString"},
+                "code": {"type": "string"}
+            },
+            "required": ["id", "name", "code"]
+        },
+
+        "Cinema": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "name": { "$ref": "#/definitions/LocalizedString"},
+                "capacity": {"type": "integer", "minimum": 0},
+                "luxury": {"type": "boolean"},
+                "phones": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "minItems": 0
+                },
+                "location": {"type": "string"}
+            },
+            "required": ["id", "name", "capacity", "luxury", "location"]
+        }
+    }
+}

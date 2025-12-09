@@ -1,0 +1,4 @@
+(: Q1 - Return all movie titles that are longer than 120 minutes
+AND are directed by a person with at least 3 awards :)
+
+//Movie[Duration > 120 and DirectedBy/@ref = /MovieDatabase/People/Person[AwardsCount >= 3]/@id]/Title

@@ -1,0 +1,4 @@
+screeningID,movieID,cinemaID,screeningDate,screeningTime,language
+arr-la-2024-06-02-1800,arrival,amc-la,2024-06-02,18:00:00,en
+inc-lon-2024-06-01-2000,inception,imax-london,2024-06-01,20:00:00,en
+ww-par-2024-06-03-1900,wonder-woman,le-grand-paris,2024-06-03,19:00:00,fr

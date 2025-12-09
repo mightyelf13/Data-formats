@@ -1,0 +1,4 @@
+(: Q2 - Return all Studios that produce at least one Movie
+whose duration is greater than 120 minutes :)
+
+//Studio[@id = /MovieDatabase/Movies/Movie[Duration > 120]/ProducedBy/@ref]

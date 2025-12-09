@@ -1,0 +1,53 @@
+{
+  "@context": {
+    "@vocab": "http://example.org/schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "id": "@id",
+    "countries": { "@container": "@set" },
+    "actors":    { "@container": "@set" },
+
+    "name":       { "@container": "@language" },
+    "fullName":   { "@container": "@language" },
+    "stageName":  { "@container": "@language" },
+
+    "code":       "http://example.org/schema#code",
+    "bornIn":     { "@type": "@id" },
+    "birthDate":  { "@type": "xsd:date" },
+    "debutYear":  { "@type": "xsd:gYear" }
+  },
+
+  "countries": [
+    { "id": "country-us", "name": { "en": "United States" }, "code": "US" },
+    { "id": "country-uk", "name": { "en": "United Kingdom" }, "code": "GB" },
+    { "id": "country-fr", "name": { "en": "France" }, "code": "FR" }
+  ],
+
+  "actors": [
+    {
+      "id": "actor-leonardo-dicaprio",
+      "fullName": { "en": "Leonardo DiCaprio" },
+      "birthDate": "1974-11-11",
+      "stageName": { "en": "Leonardo DiCaprio" },
+      "debutYear": 1991,
+      "bornIn": "country-us"
+    },
+    {
+      "id": "actor-amy-adams",
+      "fullName": { "en": "Amy Adams" },
+      "birthDate": "1974-08-20",
+      "stageName": { "en": "Amy Adams" },
+      "debutYear": 1995,
+      "bornIn": "country-us"
+    },
+    {
+      "id": "actor-gal-gadot",
+      "fullName": { "en": "Gal Gadot" },
+      "birthDate": "1985-04-30",
+      "stageName": { "en": "Gal Gadot" },
+      "debutYear": 2007,
+      "bornIn": "country-us"
+    }
+  ]
+}
+

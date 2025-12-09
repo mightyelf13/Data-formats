@@ -1,0 +1,14 @@
+# Screenings per Country
+
+PREFIX ex:   <http://example.org/vocabulary/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?country (COUNT(?s) AS ?screenings)
+WHERE {
+    ?s a ex:Screening ;
+        ex:takesPlaceAt ?cinema .
+    ?cinema ex:locatedIn ?countryRes .
+    ?countryRes rdfs:label ?country .
+}
+GROUP BY ?country
+ORDER BY ?country

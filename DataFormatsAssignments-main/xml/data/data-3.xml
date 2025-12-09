@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CinemasAndCountries xmlns="http://example.com/movies"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://example.com/movies ../schemas/schema-3.xsd">
+    <Countries>
+        <Country id="country_us">
+            <Name xml:lang="en">United States</Name>
+            <Code>US</Code>
+        </Country>
+        <Country id="country_uk">
+            <Name xml:lang="en">United Kingdom</Name>
+            <Code>GB</Code>
+        </Country>
+        <Country id="country_fr">
+            <Name xml:lang="en">France</Name>
+            <Code>FR</Code>
+        </Country>
+    </Countries>
+    
+    <Cinemas>
+        <Cinema id="cinema_imax-london">
+            <Name xml:lang="en">IMAX London</Name>
+            <Capacity>500</Capacity>
+            <Luxury>true</Luxury>
+            <Phone>+441234567890</Phone>
+            <Phone>+442345678901</Phone>
+            <Location ref="country_uk"/>
+        </Cinema>
+
+        <Cinema id="cinema_amc-la">
+            <Name xml:lang="en">AMC Los Angeles</Name>
+            <Capacity>350</Capacity>
+            <Luxury>false</Luxury>
+            <Location ref="country_us"/>
+        </Cinema>
+
+        <Cinema id="cinema_le-grand-paris">
+            <Name xml:lang="en">Le Grand Paris</Name>
+            <Capacity>220</Capacity>
+            <Luxury>true</Luxury>
+            <Phone>+330987654321</Phone>
+            <Location ref="country_fr"/>
+        </Cinema>
+    </Cinemas>
+
+                    
+</CinemasAndCountries>

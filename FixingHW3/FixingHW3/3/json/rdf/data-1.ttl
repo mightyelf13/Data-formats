@@ -1,0 +1,138 @@
+PREFIX : <http://example.org/schema#>
+
+_:b0    :cinemas     <file:///Users/turanisgandarli/Desktop/3/json/data/cin-berlin>;
+        :cinemas     <file:///Users/turanisgandarli/Desktop/3/json/data/cin-london>;
+        :cinemas     <file:///Users/turanisgandarli/Desktop/3/json/data/cin-nyc>;
+        :countries   <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :countries   <file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>;
+        :countries   <file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>;
+        :movies      <file:///Users/turanisgandarli/Desktop/3/json/data/m-inception>;
+        :movies      <file:///Users/turanisgandarli/Desktop/3/json/data/m-matrix>;
+        :movies      <file:///Users/turanisgandarli/Desktop/3/json/data/m-tenet>;
+        :people      <file:///Users/turanisgandarli/Desktop/3/json/data/p-nolan>;
+        :people      <file:///Users/turanisgandarli/Desktop/3/json/data/p-wachowski>;
+        :people      <file:///Users/turanisgandarli/Desktop/3/json/data/p-dicaprio>;
+        :screenings  <file:///Users/turanisgandarli/Desktop/3/json/data/scr1>;
+        :screenings  <file:///Users/turanisgandarli/Desktop/3/json/data/scr2>;
+        :screenings  <file:///Users/turanisgandarli/Desktop/3/json/data/scr3>;
+        :studios     <file:///Users/turanisgandarli/Desktop/3/json/data/s-wb>;
+        :studios     <file:///Users/turanisgandarli/Desktop/3/json/data/s-pinewood>;
+        :studios     <file:///Users/turanisgandarli/Desktop/3/json/data/s-babelsberg> .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/cin-berlin>
+        :capacity  "500"^^<xsd:integer>;
+        :location  <file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>;
+        :luxury    "true"^^<xsd:boolean>;
+        :name      "IMAX Berlin"@en;
+        :phones    "+49-30-555-000" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/cin-london>
+        :capacity  "350"^^<xsd:integer>;
+        :location  <file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>;
+        :luxury    "false"^^<xsd:boolean>;
+        :name      "London Central Cinema"@en;
+        :phones    "+44-20-222-3333" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/cin-nyc>
+        :capacity  "420"^^<xsd:integer>;
+        :location  <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :luxury    "true"^^<xsd:boolean>;
+        :name      "NYC Downtown Cinema"@en;
+        :phones    "+1-212-100-2000" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>
+        :code   "FR";
+        :name   "France"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>
+        :code   "GB";
+        :name   "United Kingdom"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-us>
+        :code   "US";
+        :name   "United States"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/m-inception>
+        :directedBy   <file:///Users/turanisgandarli/Desktop/3/json/data/p-nolan>;
+        :duration     "148"^^<xsd:integer>;
+        :producedBy   <file:///Users/turanisgandarli/Desktop/3/json/data/s-wb>;
+        :releaseDate  "2010-07-16"^^<xsd:date>;
+        :title        "Inception"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/m-matrix>
+        :directedBy   <file:///Users/turanisgandarli/Desktop/3/json/data/p-wachowski>;
+        :duration     "136"^^<xsd:integer>;
+        :producedBy   <file:///Users/turanisgandarli/Desktop/3/json/data/s-wb>;
+        :releaseDate  "1999-03-31"^^<xsd:date>;
+        :title        "The Matrix"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/m-tenet>
+        :directedBy   <file:///Users/turanisgandarli/Desktop/3/json/data/p-nolan>;
+        :duration     "150"^^<xsd:integer>;
+        :producedBy   <file:///Users/turanisgandarli/Desktop/3/json/data/s-babelsberg>;
+        :releaseDate  "2020-08-26"^^<xsd:date>;
+        :title        "Tenet"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/p-dicaprio>
+        a           :Actor;
+        :actedIn    <file:///Users/turanisgandarli/Desktop/3/json/data/m-inception>;
+        :birthDate  "1974-11-11"^^<xsd:date>;
+        :bornIn     <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :debutYear  1991;
+        :fullName   "Leonardo DiCaprio"@en;
+        :stageName  "Leo"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/p-nolan>
+        a             :Director;
+        :activeSince  "1998"^^<xsd:gYear>;
+        :awardsCount  "10"^^<xsd:integer>;
+        :birthDate    "1970-07-30"^^<xsd:date>;
+        :bornIn       <file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>;
+        :fullName     "Christopher Nolan"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/p-wachowski>
+        a             :Director;
+        :activeSince  "1994"^^<xsd:gYear>;
+        :awardsCount  "5"^^<xsd:integer>;
+        :birthDate    "1965-06-21"^^<xsd:date>;
+        :bornIn       <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :fullName     "Lana Wachowski"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/s-babelsberg>
+        :foundedYear     "1912"^^<xsd:gYear>;
+        :location        <file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>;
+        :moviesProduced  "120"^^<xsd:integer>;
+        :name            "Studio Babelsberg"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/s-pinewood>
+        :foundedYear     "1936"^^<xsd:gYear>;
+        :location        <file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>;
+        :moviesProduced  "150"^^<xsd:integer>;
+        :name            "Pinewood Studios"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/s-wb>
+        :foundedYear     "1923"^^<xsd:gYear>;
+        :location        <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :moviesProduced  "200"^^<xsd:integer>;
+        :name            "Warner Bros. Pictures"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/scr1>
+        :date          "2024-04-01"^^<xsd:date>;
+        :language      "en";
+        :shows         <file:///Users/turanisgandarli/Desktop/3/json/data/m-inception>;
+        :takesPlaceAt  <file:///Users/turanisgandarli/Desktop/3/json/data/cin-berlin>;
+        :time          "19:30:00"^^<xsd:time> .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/scr2>
+        :date          "2024-04-02"^^<xsd:date>;
+        :language      "en";
+        :shows         <file:///Users/turanisgandarli/Desktop/3/json/data/m-matrix>;
+        :takesPlaceAt  <file:///Users/turanisgandarli/Desktop/3/json/data/cin-london>;
+        :time          "20:00:00"^^<xsd:time> .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/scr3>
+        :date          "2024-04-03"^^<xsd:date>;
+        :language      "de";
+        :shows         <file:///Users/turanisgandarli/Desktop/3/json/data/m-tenet>;
+        :takesPlaceAt  <file:///Users/turanisgandarli/Desktop/3/json/data/cin-nyc>;
+        :time          "21:15:00"^^<xsd:time> .

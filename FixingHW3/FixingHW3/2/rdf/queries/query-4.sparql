@@ -1,0 +1,17 @@
+# For each studio: show its country and how many movies it produced.
+
+PREFIX ex:   <http://example.org/vocabulary/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?studioName ?country (COUNT(?movie) AS ?movieCount)
+WHERE {
+    ?st a ex:Studio ;
+        foaf:name ?studioName ;
+        ex:basedIn ?countryRes .
+    ?countryRes rdfs:label ?country .
+    ?movie a ex:Movie ;
+            ex:producedBy ?st .
+}
+GROUP BY ?studioName ?country
+ORDER BY ?studioName

@@ -1,0 +1,41 @@
+PREFIX : <http://example.org/schema#>
+
+_:b0    :cinemas    <file:///Users/turanisgandarli/Desktop/3/json/data/cinema-imax-london>;
+        :cinemas    <file:///Users/turanisgandarli/Desktop/3/json/data/cinema-amc-los-angeles>;
+        :cinemas    <file:///Users/turanisgandarli/Desktop/3/json/data/cinema-le-grand-paris>;
+        :countries  <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :countries  <file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>;
+        :countries  <file:///Users/turanisgandarli/Desktop/3/json/data/country-fr> .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/cinema-amc-los-angeles>
+        :capacity  "350"^^<xsd:integer>;
+        :location  <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :luxury    "false"^^<xsd:boolean>;
+        :name      "AMC Los Angeles"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/cinema-imax-london>
+        :capacity  "500"^^<xsd:integer>;
+        :location  <file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>;
+        :luxury    "true"^^<xsd:boolean>;
+        :name      "IMAX London"@en;
+        :phones    "+441234567890";
+        :phones    "+442345678901" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/cinema-le-grand-paris>
+        :capacity  "220"^^<xsd:integer>;
+        :location  <file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>;
+        :luxury    "true"^^<xsd:boolean>;
+        :name      "Le Grand Paris"@en;
+        :phones    "+330987654321" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>
+        :code   "FR";
+        :name   "France"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>
+        :code   "GB";
+        :name   "United Kingdom"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-us>
+        :code   "US";
+        :name   "United States"@en .

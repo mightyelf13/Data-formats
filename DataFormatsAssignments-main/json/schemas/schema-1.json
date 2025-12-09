@@ -1,0 +1,166 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/json/schema-1",
+    "title": "Movie database hierarchy",
+    "type": "object",
+    "additionalProperties": false,
+
+    "properties": {
+        "@context": {
+        "type": ["object", "string"]
+        },
+        "countries": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Country"}, 
+            "minItems": 3
+        },
+        "studios": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Studio"}, 
+            "minItems": 3
+        },
+        "cinemas": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Cinema"}, 
+            "minItems": 3
+        },
+        "people": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Person"}, 
+            "minItems": 3
+        },
+        "movies": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Movie"}, 
+            "minItems": 3
+        },
+        "screenings": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Screening"}, 
+            "minItems": 3
+        }
+    },
+
+    "required": [
+        "countries",
+        "studios",
+        "cinemas",
+        "people",
+        "movies",
+        "screenings"
+    ],
+
+    "definitions": {
+        "LocalizedString": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "value": { "type": "string"},
+                "lang": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z-]+$"
+                }
+            },
+            "required": ["value"]
+        },
+
+        "Country": {
+            "type": "object", 
+            "additionalProperties": false,
+            "properties": {
+                "id": { "type": "string"},
+                "name": {"$ref": "#/definitions/LocalizedString"},
+                "code": {"type": "string"}
+            },
+            "required": ["id", "name", "code"]
+        },
+        
+        "Studio": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "name": { "$ref": "#/definitions/LocalizedString"},
+                "foundedYear": {"type": "integer"},
+                "moviesProduced": {"type": "integer", "minimum": 0},
+                "location": {"type": "string"}
+            },
+            "required": ["id", "name", "foundedYear", "moviesProduced", "location"]
+        },
+
+        "Cinema": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "name": { "$ref": "#/definitions/LocalizedString"},
+                "capacity": {"type": "integer", "minimum": 0},
+                "luxury": {"type": "boolean"},
+                "phones": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "minItems": 0
+                },
+                "location": {"type": "string"}
+            },
+            "required": ["id", "name", "capacity", "luxury", "location"]
+        },
+
+        "Person": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "type": {
+                    "type" : "string",
+                    "enum": ["Actor", "Director"]
+                },
+                "fullName": { "$ref": "#/definitions/LocalizedString"},
+                "birthDate": {"type": "string", "format": "date"},
+
+                "activeSince": {"type": "integer"},
+                "awardsCount": {"type": "integer", "minimum": 0},
+
+                "stageName": {"$ref": "#/definitions/LocalizedString"},
+                "debutYear": {"type": "integer"},
+
+                "bornIn": {"type":"string"},
+
+                "actedIn": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "minItems": 0
+                }
+            },
+            "required": ["id", "type", "fullName", "birthDate"]
+        },
+
+        "Movie": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "title": { "$ref": "#/definitions/LocalizedString"},
+                "duration": { "type": "integer", "minimum": 0},
+                "releaseDate": {"type": "string", "format": "date"},
+                "directedBy": {"type": "string"},
+                "producedBy": {"type": "string"}
+            },
+            "required": ["id", "title", "duration", "releaseDate", "directedBy", "producedBy"]
+        },
+
+        "Screening": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "date": { "type": "string", "format": "date"},
+                "time": {"type":"string", "format": "time"},
+                "language": {"type": "string"},
+                "shows": {"type": "string"},
+                "takesPlaceAt": {"type": "string"}
+            },
+            "required": ["id", "date", "time", "language", "shows", "takesPlaceAt"]
+        }
+    }
+}

@@ -1,0 +1,102 @@
+
+@base <https://data.example.org/>.
+@prefix ex:      <http://example.org/vocabulary/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf:    <http://xmlns.com/foaf/0.1/>.
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>.
+
+
+### COUNTRIES
+
+<country/us> a ex:Country;
+    rdfs:label "United States"@en;
+    ex:isoCode "US" .
+
+
+<country/uk> a ex:Country;
+    rdfs:label "United Kingdom"@en;
+    ex:isoCode "GB" .
+
+
+<country/fr> a ex:Country;
+    rdfs:label "France"@en;
+    ex:isoCode "FR" .
+
+
+
+### STUDIOS
+
+<studio/warner-bros> a ex:Studio;
+    foaf:name "Warner Bros. Pictures"@en;
+    ex:foundedYear "1923"^^xsd:gYear;
+    ex:moviesProduced 12500;
+    ex:basedIn <country/us>.
+
+
+<studio/universal> a ex:Studio;
+    foaf:name "Universal Pictures"@en;
+    ex:foundedYear "1912"^^xsd:gYear;
+    ex:moviesProduced 400;
+    ex:basedIn <country/us>.
+
+
+<studio/legendary-pictures> a ex:Studio;
+    foaf:name "Legendary Pictures"@en;
+    ex:foundedYear "2000"^^xsd:gYear;
+    ex:moviesProduced 70;
+    ex:basedIn <country/us>.
+
+
+
+### PEOPLE: DIRECTORS & ACTORS
+
+<person/leonardo-dicaprio> a ex:Actor;
+    foaf:name "Leonardo DiCaprio"@en;
+    ex:stageName "Leonardo DiCaprio"@en;
+    ex:birthDate "1974-11-11"^^xsd:date;
+    ex:debutYear "1991"^^xsd:gYear;
+    ex:bornIn <country/us>.
+
+            
+<person/amy-adams> a ex:Actor;
+    foaf:name "Amy Adams"@en;
+    ex:stageName "Amy Adams"@en;
+    ex:birthDate "1974-08-20"^^xsd:date;
+    ex:debutYear "1995"^^xsd:gYear;
+    ex:bornIn <country/us>.
+
+            
+<person/gal-gadot> a ex:Actor;
+    foaf:name "Gal Gadot"@en;
+    ex:stageName "Gal Gadot"@en;
+    ex:birthDate "1985-04-30"^^xsd:date;
+    ex:debutYear "2007"^^xsd:gYear;
+    ex:bornIn <country/us>.
+
+            
+<person/christopher-nolan> a ex:Director;
+    foaf:name "Christopher Nolan"@en;
+    ex:birthDate "1970-07-30"^^xsd:date;
+    ex:activeSince "1998"^^xsd:gYear;
+    ex:awardsCount 220;
+    ex:bornIn <country/uk>.
+
+            
+<person/denis-villeneuve> a ex:Director;
+    foaf:name "Denis Villeneuve"@en;
+    ex:birthDate "1967-10-03"^^xsd:date;
+    ex:activeSince "1994"^^xsd:gYear;
+    ex:awardsCount 160;
+    ex:bornIn <country/fr>.
+
+            
+<person/patty-jenkins> a ex:Director;
+    foaf:name "Patty Jenkins"@en;
+    ex:birthDate "1971-07-24"^^xsd:date;
+    ex:activeSince "2003"^^xsd:gYear;
+    ex:awardsCount 40;
+    ex:bornIn <country/us>.
+
+            

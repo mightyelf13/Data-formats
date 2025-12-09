@@ -1,0 +1,92 @@
+PREFIX : <http://example.org/schema#>
+
+_:b0    :countries  <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :countries  <file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>;
+        :countries  <file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>;
+        :people     <file:///Users/turanisgandarli/Desktop/3/json/data/actor_leonardo_dicaprio>;
+        :people     <file:///Users/turanisgandarli/Desktop/3/json/data/actor_amy_adams>;
+        :people     <file:///Users/turanisgandarli/Desktop/3/json/data/actor_gal_gadot>;
+        :people     <file:///Users/turanisgandarli/Desktop/3/json/data/director_christopher_nolan>;
+        :people     <file:///Users/turanisgandarli/Desktop/3/json/data/director_patty_jenkins>;
+        :people     <file:///Users/turanisgandarli/Desktop/3/json/data/director_denis_villeneuve>;
+        :studios    <file:///Users/turanisgandarli/Desktop/3/json/data/studio_warner_bros>;
+        :studios    <file:///Users/turanisgandarli/Desktop/3/json/data/studio_universal>;
+        :studios    <file:///Users/turanisgandarli/Desktop/3/json/data/studio_legendary_pictures> .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/actor_amy_adams>
+        :birthDate  "1974-08-20"^^<xsd:date>;
+        :bornIn     <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :debutYear  "1991"^^<xsd:gYear>;
+        :fullName   "Amy Adams"@en;
+        :stageName  "Amy Adams"@en;
+        :type       "Actor" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/actor_gal_gadot>
+        :birthDate  "1985-04-30"^^<xsd:date>;
+        :bornIn     <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :debutYear  "2007"^^<xsd:gYear>;
+        :fullName   "Gal Gadot"@en;
+        :stageName  "Gal Gadot"@en;
+        :type       "Actor" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/actor_leonardo_dicaprio>
+        :birthDate  "1974-11-11"^^<xsd:date>;
+        :bornIn     <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :debutYear  "1991"^^<xsd:gYear>;
+        :fullName   "Leonardo DiCaprio"@en;
+        :stageName  "Leonardo DiCaprio"@en;
+        :type       "Actor" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>
+        :code   "FR";
+        :name   "France"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>
+        :code   "GB";
+        :name   "United Kingdom"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/country-us>
+        :code   "US";
+        :name   "United States"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/director_christopher_nolan>
+        :activeSince  "1998"^^<xsd:gYear>;
+        :awardsCount  "10"^^<xsd:integer>;
+        :birthDate    "1970-07-30"^^<xsd:date>;
+        :bornIn       <file:///Users/turanisgandarli/Desktop/3/json/data/country-uk>;
+        :fullName     "Christopher Nolan"@en;
+        :type         "Director" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/director_denis_villeneuve>
+        :activeSince  "1994"^^<xsd:gYear>;
+        :awardsCount  "160"^^<xsd:integer>;
+        :birthDate    "1967-10-03"^^<xsd:date>;
+        :bornIn       <file:///Users/turanisgandarli/Desktop/3/json/data/country-fr>;
+        :fullName     "Denis Villeneuve"@en;
+        :type         "Director" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/director_patty_jenkins>
+        :activeSince  "2003"^^<xsd:gYear>;
+        :awardsCount  "40"^^<xsd:integer>;
+        :birthDate    "1971-07-24"^^<xsd:date>;
+        :bornIn       <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :fullName     "Patty Jenkins"@en;
+        :type         "Director" .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/studio_legendary_pictures>
+        :foundedYear     "2000"^^<xsd:gYear>;
+        :location        <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :moviesProduced  "70"^^<xsd:integer>;
+        :name            "Legendary Pictures"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/studio_universal>
+        :foundedYear     "1912"^^<xsd:gYear>;
+        :location        <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :moviesProduced  "400"^^<xsd:integer>;
+        :name            "Universal Pictures"@en .
+
+<file:///Users/turanisgandarli/Desktop/3/json/data/studio_warner_bros>
+        :foundedYear     "1923"^^<xsd:gYear>;
+        :location        <file:///Users/turanisgandarli/Desktop/3/json/data/country-us>;
+        :moviesProduced  "12500"^^<xsd:integer>;
+        :name            "Warner Bros. Pictures"@en .

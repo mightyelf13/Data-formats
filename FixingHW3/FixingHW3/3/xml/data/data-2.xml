@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActorsAndCountries xmlns="http://example.com/schema-2"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://example.com/schema-2 ../schemas/schema-2.xsd">
+    <Countries>
+        <Country id="country_us">
+            <Name xml:lang="en">United States</Name>
+            <Code>US</Code>
+        </Country>
+
+        <Country id="country_uk">
+            <Name xml:lang="en">United Kingdom</Name>
+            <Code>GB</Code>
+        </Country>
+
+        <Country id="country_fr">
+            <Name xml:lang="en">France</Name>
+            <Code>FR</Code>
+        </Country>
+    </Countries>
+
+    <Actors>
+        <Actor id="actor_leonardo_dicaprio">
+            <StageName xml:lang="en">Leonardo DiCaprio</StageName>
+            <DebutYear>1991</DebutYear>
+            <FullName xml:lang="en">Leonardo DiCaprio</FullName>
+            <BirthDate>1974-11-11</BirthDate>
+            <BornIn ref="country_us"/>
+        </Actor>
+
+        <Actor id="actor_amy_adams">
+            <StageName xml:lang="en">Amy Adams</StageName>
+            <DebutYear>1995</DebutYear>
+            <FullName xml:lang="en">Amy Adams</FullName>
+            <BirthDate>1974-08-20</BirthDate>
+            <BornIn ref="country_us"/>
+        </Actor>
+
+        <Actor id="actor_gal_gadot">
+            <StageName xml:lang="en">Gal Gadot</StageName>
+            <DebutYear>2007</DebutYear>
+            <FullName xml:lang="en">Gal Gadot</FullName>
+            <BirthDate>1985-04-30</BirthDate>
+            <BornIn ref="country_us"/>
+        </Actor>
+    </Actors>
+                
+</ActorsAndCountries>

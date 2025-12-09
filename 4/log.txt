@@ -1,0 +1,7 @@
+2025-12-08  T1G6  Data engineer: created CSV tables (data-1..data-10) consistent with HW2/HW3 instances.
+2025-12-08  T1G6  Knowledge engineer: fixed CSVW descriptor (IRIs, datatypes, PK/FK, virtual rdf:type).
+2025-12-08  T1G6  Modeler: updated relational model to include all attributes used in HW2/HW3 (Country.isoCode, Screening.language) and all PK/FK.
+
+Command to generate RDF using rdf-tabular (run locally where rdf-tabular is installed):
+  cd 4/csv
+  rdf-tabular data.csv-metadata.json > ../rdf/data.ttl

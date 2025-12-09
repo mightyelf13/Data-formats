@@ -1,0 +1,4 @@
+cinemaID,cinemaName,capacity,isLuxury,countryCode
+amc-la,AMC Los Angeles,350,false,us
+imax-london,IMAX London,500,true,uk
+le-grand-paris,Le Grand Paris,220,true,fr

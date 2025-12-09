@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/movies"
+           xmlns="http://example.com/movies"
+           xmlns:xml="http://www.w3.org/XML/1998/namespace"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" 
+               schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+
+    <xs:complexType name="LocalizableString">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:element name="CinemasAndCountries">
+        <xs:complexType>
+            <xs:all>
+                <xs:element ref="Countries"/>
+                <xs:element ref="Cinemas"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Countries">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Country" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Country">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Name" type="LocalizableString" maxOccurs="unbounded"/>
+                <xs:element name="Code" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Cinemas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Cinema" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Cinema">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Name" type="LocalizableString" maxOccurs="unbounded"/>
+                <xs:element name="Capacity" type="xs:integer"/>
+                <xs:element name="Luxury" type="xs:boolean"/>
+                <xs:element name="Phone" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="Location" type="CountryRefType"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="CountryRefType">
+        <xs:attribute name="ref" type="xs:IDREF" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,4 @@
+(: Q3 - Return all Movies that have at least one Actor
+(Person with @type = 'Actor') who acted in that Movie :)
+
+//Movie[@id =/MovieDatabase/People/Person[@type = 'Actor' and ActedIn]/ActedIn/@ref]

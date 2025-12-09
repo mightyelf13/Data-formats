@@ -1,0 +1,102 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/json/schema-4",
+    "title": "People and studios hierarchy",
+    "type": "object",
+    "additionalProperties": false,
+
+    "properties": {
+        "@context": {
+            "type": ["object", "string"]
+        },
+        "countries": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Country"}, 
+            "minItems": 3
+        },
+        "studios": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Studio"}, 
+            "minItems": 3
+        },
+        "people": {
+            "type": "array", 
+            "items": {"$ref": "#/definitions/Person"}, 
+            "minItems": 3
+        }
+    },
+
+    "required": [
+        "countries",
+        "studios",
+        "people"
+    ],
+
+    "definitions": {
+        "LocalizedString": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "value": { "type": "string"},
+                "lang": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z-]+$"
+                }
+            },
+            "required": ["value"]
+        },
+
+        "Country": {
+            "type": "object", 
+            "additionalProperties": false,
+            "properties": {
+                "id": { "type": "string"},
+                "name": {"$ref": "#/definitions/LocalizedString"},
+                "code": {"type": "string"}
+            },
+            "required": ["id", "name", "code"]
+        },
+        
+        "Studio": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "name": { "$ref": "#/definitions/LocalizedString"},
+                "foundedYear": {"type": "integer"},
+                "moviesProduced": {"type": "integer", "minimum": 0},
+                "location": {"type": "string"}
+            },
+            "required": ["id", "name", "foundedYear", "moviesProduced", "location"]
+        },
+
+        "Person": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "type": {
+                    "type" : "string",
+                    "enum": ["Actor", "Director"]
+                },
+                "fullName": { "$ref": "#/definitions/LocalizedString"},
+                "birthDate": {"type": "string", "format": "date"},
+
+                "activeSince": {"type": "integer"},
+                "awardsCount": {"type": "integer", "minimum": 0},
+
+                "stageName": {"$ref": "#/definitions/LocalizedString"},
+                "debutYear": {"type": "integer"},
+
+                "bornIn": {"type":"string"},
+
+                "actedIn": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "minItems": 0
+                }
+            },
+            "required": ["id", "type", "fullName", "birthDate"]
+        }
+    }
+}

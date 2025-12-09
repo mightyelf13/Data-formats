@@ -1,0 +1,173 @@
+
+@base <https://data.example.org/>.
+@prefix ex:      <http://example.org/vocabulary/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf:    <http://xmlns.com/foaf/0.1/>.
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>.
+
+
+### COUNTRIES
+
+<country/us> a ex:Country;
+    rdfs:label "United States"@en;
+    ex:isoCode "US" .
+
+    
+<country/gb> a ex:Country;
+    rdfs:label "United Kingdom"@en;
+    ex:isoCode "GB" .
+
+    
+<country/de> a ex:Country;
+    rdfs:label "Deutschland"@en;
+    ex:isoCode "DE" .
+
+    
+
+### STUDIOS
+
+<studio/wb> a ex:Studio;
+    foaf:name "Warner Bros. Pictures"@en;
+    ex:foundedYear "1923"^^xsd:gYear;
+    ex:moviesProduced 200;
+    ex:basedIn <country/us>.
+
+    
+<studio/pinewood> a ex:Studio;
+    foaf:name "Pinewood Studios"@en;
+    ex:foundedYear "1936"^^xsd:gYear;
+    ex:moviesProduced 150;
+    ex:basedIn <country/gb>.
+
+    
+<studio/babelsberg> a ex:Studio;
+    foaf:name "Studio Babelsberg"@en;
+    ex:foundedYear "1912"^^xsd:gYear;
+    ex:moviesProduced 120;
+    ex:basedIn <country/de>.
+
+    
+
+### CINEMAS
+
+<cinema/berlin> a ex:Cinema;
+    foaf:name "IMAX Berlin"@en;
+    ex:capacity 500;
+    ex:isLuxury true;
+        ex:phone <tel:+4930555000>;
+    ex:locatedIn <country/de>.
+
+    
+<cinema/london> a ex:Cinema;
+    foaf:name "London Central Cinema"@en;
+    ex:capacity 350;
+    ex:isLuxury false;
+        ex:phone <tel:+44202223333>;
+    ex:locatedIn <country/gb>.
+
+    
+<cinema/nyc> a ex:Cinema;
+    foaf:name "NYC Downtown Cinema"@en;
+    ex:capacity 420;
+    ex:isLuxury true;
+        ex:phone <tel:+12121002000>;
+    ex:locatedIn <country/us>.
+
+    
+
+### PEOPLE: DIRECTORS & ACTORS
+
+        
+<person/nolan> a ex:Director;
+    foaf:name "Christopher Nolan"@en;
+        
+    ex:birthDate "1970-07-30"^^xsd:date;
+    ex:activeSince "1998"^^xsd:gYear;
+    ex:awardsCount 10;
+            
+    ex:bornIn <country/gb>.
+
+    
+        
+<person/wachowski> a ex:Director;
+    foaf:name "Lana Wachowski"@en;
+        
+    ex:birthDate "1965-06-21"^^xsd:date;
+    ex:activeSince "1994"^^xsd:gYear;
+    ex:awardsCount 5;
+            
+    ex:bornIn <country/us>.
+
+    
+        
+<person/dicaprio> a ex:Actor;
+    foaf:name "Leonardo DiCaprio"@en;
+        
+    ex:birthDate "1974-11-11"^^xsd:date;
+    ex:stageName "Leo"@en;
+    ex:debutYear "1991"^^xsd:gYear;
+            
+    ex:bornIn <country/us>.
+
+    
+
+### MOVIES
+
+<movie/inception> a ex:Movie;
+    dcterms:title "Inception"@en;
+    ex:durationMinutes 148;
+    ex:releaseDate "2010-07-16"^^xsd:date;
+    ex:directedBy <person/nolan>;
+    ex:producedBy <studio/wb>.
+
+    
+<movie/matrix> a ex:Movie;
+    dcterms:title "The Matrix";
+    ex:durationMinutes 136;
+    ex:releaseDate "1999-03-31"^^xsd:date;
+    ex:directedBy <person/wachowski>;
+    ex:producedBy <studio/wb>.
+
+    
+<movie/tenet> a ex:Movie;
+    dcterms:title "Tenet";
+    ex:durationMinutes 150;
+    ex:releaseDate "2020-08-26"^^xsd:date;
+    ex:directedBy <person/nolan>;
+    ex:producedBy <studio/babelsberg>.
+
+    
+
+### SCREENINGS
+
+<screening/1> a ex:Screening;
+    ex:shows <movie/inception>;
+    ex:takesPlaceAt <cinema/berlin>;
+    ex:screeningDate "2024-04-01"^^xsd:date;
+    ex:screeningTime "19:30:00"^^xsd:time;
+    dcterms:language "en"^^xsd:language.
+
+    
+<screening/2> a ex:Screening;
+    ex:shows <movie/matrix>;
+    ex:takesPlaceAt <cinema/london>;
+    ex:screeningDate "2024-04-02"^^xsd:date;
+    ex:screeningTime "20:00:00"^^xsd:time;
+    dcterms:language "en"^^xsd:language.
+
+    
+<screening/3> a ex:Screening;
+    ex:shows <movie/tenet>;
+    ex:takesPlaceAt <cinema/nyc>;
+    ex:screeningDate "2024-04-03"^^xsd:date;
+    ex:screeningTime "21:15:00"^^xsd:time;
+    dcterms:language "de"^^xsd:language.
+
+    
+
+### ACTOR <-> MOVIE
+
+<person/dicaprio> ex:actedIn <movie/inception>.
+    

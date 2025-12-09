@@ -1,0 +1,53 @@
+
+@base <https://data.example.org/>.
+@prefix ex:      <http://example.org/vocabulary/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf:    <http://xmlns.com/foaf/0.1/>.
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>.
+
+
+### COUNTRIES
+
+<country/us> a ex:Country;
+    rdfs:label "United States"@en;
+    ex:isoCode "US" .
+
+
+<country/uk> a ex:Country;
+    rdfs:label "United Kingdom"@en;
+    ex:isoCode "GB" .
+
+
+<country/fr> a ex:Country;
+    rdfs:label "France"@en;
+    ex:isoCode "FR" .
+
+
+
+### CINEMAS
+
+<cinema/imax-london> a ex:Cinema;
+    foaf:name "IMAX London"@en;
+    ex:capacity 500;
+    ex:isLuxury true;
+    ex:phone <tel:+441234567890>,
+        <tel:+442345678901>;
+    ex:locatedIn <country/uk>.
+
+
+<cinema/amc-los-angeles> a ex:Cinema;
+    foaf:name "AMC Los Angeles"@en;
+    ex:capacity 350;
+    ex:isLuxury false;
+    ex:locatedIn <country/us>.
+
+
+<cinema/le-grand-paris> a ex:Cinema;
+    foaf:name "Le Grand Paris"@en;
+    ex:capacity 220;
+    ex:isLuxury true;
+    ex:phone <tel:+330987654321>;
+    ex:locatedIn <country/fr>.
+
