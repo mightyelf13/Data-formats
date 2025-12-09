@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://example.com/schema-4"
-           xmlns="http://example.com/schema-4"
+           targetNamespace="http://example.com/movies"
+           xmlns="http://example.com/movies"
            xmlns:xml="http://www.w3.org/XML/1998/namespace"
            elementFormDefault="qualified">
 
-    <!-- Import XML namespace for xml:lang -->
     <xs:import namespace="http://www.w3.org/XML/1998/namespace" 
                schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 
-    <!-- Complex type for text with language support -->
     <xs:complexType name="LocalizableString">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -18,17 +16,15 @@
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:element name="PeopleAndStudios">
+    <xs:element name="StudiosAndCountries">
         <xs:complexType>
             <xs:all>
                 <xs:element ref="Countries"/>
                 <xs:element ref="Studios"/>
-                <xs:element ref="People"/>
             </xs:all>
         </xs:complexType>
     </xs:element>
 
-    <!-- COUNTRIES -->
     <xs:element name="Countries">
         <xs:complexType>
             <xs:sequence>
@@ -47,7 +43,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- STUDIOS -->
     <xs:element name="Studios">
         <xs:complexType>
             <xs:sequence>
@@ -68,41 +63,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- PEOPLE (Actors and Directors) -->
-    <xs:element name="People">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="Person" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="Person">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="FullName" type="LocalizableString" maxOccurs="unbounded"/>
-                <xs:element name="BirthDate" type="xs:date"/>
-                <!-- Actor specific elements -->
-                <xs:element name="StageName" type="LocalizableString" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="DebutYear" type="xs:gYear" minOccurs="0"/>
-                <!-- Director specific elements -->
-                <xs:element name="ActiveSince" type="xs:gYear" minOccurs="0"/>
-                <xs:element name="AwardsCount" type="xs:int" minOccurs="0"/>
-                <xs:element name="BornIn" type="CountryRefType" minOccurs="0"/>
-            </xs:sequence>
-            <xs:attribute name="id" type="xs:ID" use="required"/>
-            <xs:attribute name="type" use="required">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="Actor"/>
-                        <xs:enumeration value="Director"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:attribute>
-        </xs:complexType>
-    </xs:element>
-
-    <!-- REFERENCE TYPES -->
     <xs:complexType name="CountryRefType">
         <xs:attribute name="ref" type="xs:IDREF" use="required"/>
     </xs:complexType>

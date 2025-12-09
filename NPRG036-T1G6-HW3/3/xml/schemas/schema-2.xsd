@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://example.com/schema-2"
-           xmlns="http://example.com/schema-2"
+           targetNamespace="http://example.com/movies"
+           xmlns="http://example.com/movies"
            xmlns:xml="http://www.w3.org/XML/1998/namespace"
            elementFormDefault="qualified">
 
     <xs:import namespace="http://www.w3.org/XML/1998/namespace" 
                schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 
-    <!-- Complex type for text with language support -->
     <xs:complexType name="LocalizableString">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -26,7 +25,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- COUNTRIES -->
     <xs:element name="Countries">
         <xs:complexType>
             <xs:sequence>
@@ -45,7 +43,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- ACTORS -->
     <xs:element name="Actors">
         <xs:complexType>
             <xs:sequence>
@@ -67,7 +64,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- REFERENCE TYPES -->
     <xs:complexType name="CountryRefType">
         <xs:attribute name="ref" type="xs:IDREF" use="required"/>
     </xs:complexType>

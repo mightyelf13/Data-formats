@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@base": "https://data.example.org/",
+    "@vocab": "http://example.org/vocabulary/",
+    "ex": "http://example.org/vocabulary/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "id": "@id",
+    "type": "@type",
+    
+    "isoCode": "ex:isoCode",
+
+    "label": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+
+    "name": {
+      "@id": "foaf:name",
+      "@container": "@language"
+    },
+
+    "stageName": {
+      "@id": "ex:stageName",
+      "@container": "@language"
+    },
+
+    "birthDate":   { "@id": "ex:birthDate",   "@type": "xsd:date" },
+
+    "debutYear":   { "@id": "ex:debutYear",   "@type": "xsd:gYear" },
+    "bornIn":      { "@id": "ex:bornIn",      "@type": "@id" }
+  },
+
+  "@graph": [
+    { "id": "country/us", "type": "Country", "label": { "en": "United States" },  "isoCode": "US" },
+    { "id": "country/uk", "type": "Country", "label": { "en": "United Kingdom" }, "isoCode": "GB" },
+    { "id": "country/fr", "type": "Country", "label": { "en": "France" },         "isoCode": "FR" },
+
+    {
+      "id": "person/leonardo-dicaprio",
+      "type": "Actor",
+      "name": { "en": "Leonardo DiCaprio" },
+      "birthDate": "1974-11-11",
+      "stageName": { "en": "Leonardo DiCaprio" },
+      "debutYear": 1991,
+      "bornIn": "country/us"
+    },
+    {
+      "id": "person/amy-adams",
+      "type": "Actor",
+      "name": { "en": "Amy Adams" },
+      "birthDate": "1974-08-20",
+      "stageName": { "en": "Amy Adams" },
+      "debutYear": 1995,
+      "bornIn": "country/us"
+    },
+    {
+      "id": "person/gal-gadot",
+      "type": "Actor",
+      "name": { "en": "Gal Gadot" },
+      "birthDate": "1985-04-30",
+      "stageName": { "en": "Gal Gadot" },
+      "debutYear": 2007,
+      "bornIn": "country/us"
+    }
+  ]
+}

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://example.com/schema-1"
-           xmlns="http://example.com/schema-1"
+           targetNamespace="http://example.com/movies"
+           xmlns="http://example.com/movies"
            xmlns:xml="http://www.w3.org/XML/1998/namespace"
            elementFormDefault="qualified">
 
-    <!-- Import XML namespace for xml:lang -->
     <xs:import namespace="http://www.w3.org/XML/1998/namespace" 
                schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 
-    <!-- Complex type for text with language support -->
     <xs:complexType name="LocalizableString">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -31,7 +29,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- COUNTRIES -->
     <xs:element name="Countries">
         <xs:complexType>
             <xs:sequence>
@@ -50,7 +47,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- STUDIOS -->
     <xs:element name="Studios">
         <xs:complexType>
             <xs:sequence>
@@ -64,14 +60,13 @@
             <xs:sequence>
                 <xs:element name="Name" type="LocalizableString" maxOccurs="unbounded"/>
                 <xs:element name="FoundedYear" type="xs:gYear"/>
-                <xs:element name="MoviesProduced" type="xs:int"/>
+                <xs:element name="MoviesProduced" type="xs:integer"/>
                 <xs:element name="Location" type="CountryRefType"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:ID" use="required"/>
         </xs:complexType>
     </xs:element>
 
-    <!-- CINEMAS -->
     <xs:element name="Cinemas">
         <xs:complexType>
             <xs:sequence>
@@ -84,7 +79,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="Name" type="LocalizableString" maxOccurs="unbounded"/>
-                <xs:element name="Capacity" type="xs:int"/>
+                <xs:element name="Capacity" type="xs:integer"/>
                 <xs:element name="Luxury" type="xs:boolean"/>
                 <xs:element name="Phone" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
                 <xs:element name="Location" type="CountryRefType"/>
@@ -93,7 +88,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- PEOPLE (Directors & Actors) -->
     <xs:element name="People">
         <xs:complexType>
             <xs:sequence>
@@ -107,14 +101,11 @@
             <xs:sequence>
                 <xs:element name="FullName" type="LocalizableString" maxOccurs="unbounded"/>
                 <xs:element name="BirthDate" type="xs:date"/>
-                <!-- Director specific elements -->
                 <xs:element name="ActiveSince" type="xs:gYear" minOccurs="0"/>
-                <xs:element name="AwardsCount" type="xs:int" minOccurs="0"/>
-                <!-- Actor specific elements -->
+                <xs:element name="AwardsCount" type="xs:integer" minOccurs="0"/>
                 <xs:element name="StageName" type="LocalizableString" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="DebutYear" type="xs:gYear" minOccurs="0"/>
                 <xs:element name="BornIn" type="CountryRefType" minOccurs="0"/>
-                <!-- Movie references for actors -->
                 <xs:element name="ActedIn" type="MovieRefType" maxOccurs="unbounded" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:ID" use="required"/>
@@ -129,7 +120,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- MOVIES -->
     <xs:element name="Movies">
         <xs:complexType>
             <xs:sequence>
@@ -142,7 +132,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="Title" type="LocalizableString" maxOccurs="unbounded"/>
-                <xs:element name="Duration" type="xs:int"/>
+                <xs:element name="Duration" type="xs:integer"/>
                 <xs:element name="ReleaseDate" type="xs:date"/>
                 <xs:element name="DirectedBy" type="PersonRefType"/>
                 <xs:element name="ProducedBy" type="StudioRefType"/>
@@ -151,7 +141,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- SCREENINGS -->
     <xs:element name="Screenings">
         <xs:complexType>
             <xs:sequence>
@@ -173,7 +162,6 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- REFERENCE TYPES -->
     <xs:complexType name="CountryRefType">
         <xs:attribute name="ref" type="xs:IDREF" use="required"/>
     </xs:complexType>

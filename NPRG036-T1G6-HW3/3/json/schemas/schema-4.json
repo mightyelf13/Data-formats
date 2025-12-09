@@ -1,0 +1,69 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/json/schema-4",
+    "title": "Movie database hierarchy",
+    "type": "object",
+    "additionalProperties": false,
+
+    "properties": {
+        "@context": {
+            "type": ["object", "string"]
+        },
+        
+        "@graph": {
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    { "$ref": "#/definitions/Country" },
+                    { "$ref": "#/definitions/Studio" }
+                ]
+            }   
+        }
+    },
+
+    "required": [
+        "@graph"
+    ],
+
+    "definitions": {
+        "LocalizedString": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z-]+$": { "type": "string" }
+            },
+            "additionalProperties": false
+        },
+
+        "Country": {
+            "type": "object", 
+            "additionalProperties": false,
+            "properties": {
+                "id": { "type": "string"},
+                "type": {
+                    "type": "string",
+                    "enum": ["Country"]
+                },
+                "label": {"$ref": "#/definitions/LocalizedString"},
+                "isoCode": {"type": "string"}
+            },
+            "required": ["id", "type", "label", "isoCode"]
+        },
+        
+        "Studio": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "type": {
+                    "type": "string",
+                    "enum": ["Studio"]
+                },
+                "name": { "$ref": "#/definitions/LocalizedString"},
+                "foundedYear": {"type": "integer"},
+                "moviesProduced": {"type": "integer", "minimum": 0},
+                "basedIn": {"type": "string"}
+            },
+            "required": ["id", "type", "name", "foundedYear", "moviesProduced", "basedIn"]
+        }
+    }
+}

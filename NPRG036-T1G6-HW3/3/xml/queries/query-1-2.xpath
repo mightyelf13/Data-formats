@@ -1,4 +1,8 @@
-(: Q2 - Return all Studios that produce at least one Movie
-whose duration is greater than 120 minutes :)
+(: Q2 - Return all Studios that produce at least one Movie whose duration is greater than 120 minutes :)
 
-//Studio[@id = /MovieDatabase/Movies/Movie[Duration > 120]/ProducedBy/@ref]
+declare namespace m = "http://example.com/movies";
+
+//m:Studio[
+    @id
+    = /m:MovieDatabase/m:Movies/m:Movie[m:Duration > 120]/m:ProducedBy/@ref
+]

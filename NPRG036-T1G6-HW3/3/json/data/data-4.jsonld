@@ -1,0 +1,71 @@
+{
+  "@context": {
+    "@base": "https://data.example.org/",
+    "@vocab": "http://example.org/vocabulary/",
+    "ex": "http://example.org/vocabulary/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "id": "@id",
+    "type": "@type",
+    
+    "isoCode": "ex:isoCode",
+
+    "label": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+
+    "name": {
+      "@id": "foaf:name",
+      "@container": "@language"
+    },
+
+
+    
+
+    "foundedYear": {
+      "@id": "ex:foundedYear",
+      "@type": "xsd:gYear"
+    },
+    "moviesProduced": {
+      "@id": "ex:moviesProduced",
+      "@type": "xsd:integer"
+    },
+    "basedIn":   { "@id": "ex:basedIn",   "@type": "@id" }
+
+  
+  },
+
+  "@graph": [
+    { "id": "country/us", "type": "Country", "label": { "en": "United States" },  "isoCode": "US" },
+    { "id": "country/uk", "type": "Country", "label": { "en": "United Kingdom" }, "isoCode": "GB" },
+    { "id": "country/fr", "type": "Country", "label": { "en": "France" },         "isoCode": "FR" },
+    
+    {
+      "id": "studio/warner-bros",
+      "type": "Studio",
+      "name": { "en": "Warner Bros. Pictures" },
+      "foundedYear": 1923,
+      "moviesProduced": 12500,
+      "basedIn": "country/us"
+    },
+    {
+      "id": "studio/universal",
+      "type": "Studio",
+      "name": { "en": "Universal Pictures" },
+      "foundedYear": 1912,
+      "moviesProduced": 400,
+      "basedIn": "country/us"
+    },
+    {
+      "id": "studio/legendary",
+      "type": "Studio",
+      "name": { "en": "Legendary Pictures" },
+      "foundedYear": 2000,
+      "moviesProduced": 70,
+      "basedIn": "country/us"
+    }
+  ]
+}

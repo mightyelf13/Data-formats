@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DirectorsAndCountries xmlns="http://example.com/movies"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://example.com/movies ../schemas/schema-5.xsd">
+
+    <Countries>
+        <Country id="country_us">
+            <Name xml:lang="en">United States</Name>
+            <Code>US</Code>
+        </Country>
+        <Country id="country_uk">
+            <Name xml:lang="en">United Kingdom</Name>
+            <Code>GB</Code>
+        </Country>
+        <Country id="country_fr">
+            <Name xml:lang="en">France</Name>
+            <Code>FR</Code>
+        </Country>
+    </Countries>
+
+    <Directors>
+        <Director id="person_christopher-nolan">
+            <AwardsCount>220</AwardsCount>
+            <ActiveSince>1998</ActiveSince>
+            <FullName xml:lang="en">Christopher Nolan</FullName>
+            <BirthDate>1970-07-30</BirthDate>
+            <BornIn ref="country_uk"/>
+        </Director>
+
+        <Director id="person_denis-villeneuve">
+            <AwardsCount>160</AwardsCount>
+            <ActiveSince>1994</ActiveSince>
+            <FullName xml:lang="en">Denis Villeneuve</FullName>
+            <BirthDate>1967-10-03</BirthDate>
+            <BornIn ref="country_fr"/>
+        </Director>
+
+        <Director id="person_patty-jenkins">
+            <AwardsCount>40</AwardsCount>
+            <ActiveSince>2003</ActiveSince>
+            <FullName xml:lang="en">Patty Jenkins</FullName>
+            <BirthDate>1971-07-24</BirthDate>
+            <BornIn ref="country_us"/>
+        </Director>
+    </Directors>
+                
+</DirectorsAndCountries>

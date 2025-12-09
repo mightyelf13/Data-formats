@@ -1,0 +1,74 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/json/schema-2",
+    "title": "Actor and Country database hierarchy",
+    "type": "object",
+    "additionalProperties": false,
+
+    "properties": {
+        "@context": {
+            "type": ["object", "string"]
+        },
+        
+        "@graph": {
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    { "$ref": "#/definitions/Country" },
+                    { "$ref": "#/definitions/Actor" }
+                ]
+            }   
+        }
+    },
+
+    "required": [
+        "@graph"
+    ],
+
+    "definitions": {
+        "LocalizedString": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z-]+$": { "type": "string" }
+            },
+            "additionalProperties": false
+        },
+
+        "Country": {
+            "type": "object", 
+            "additionalProperties": false,
+            "properties": {
+                "id": { "type": "string"},
+                "type": {
+                    "type": "string",
+                    "enum": ["Country"]
+                },
+                "label": {"$ref": "#/definitions/LocalizedString"},
+                "isoCode": {"type": "string"}
+            },
+            "required": ["id", "type", "label", "isoCode"]
+        },
+
+        "Actor": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "type": {
+                    "type" : "string",
+                    "enum": ["Actor"]
+                },
+                "name": { "$ref": "#/definitions/LocalizedString"},
+                "birthDate": {"type": "string", "format": "date"},
+                "stageName": {"$ref": "#/definitions/LocalizedString"},
+                "debutYear": {"type": "integer"},
+                "bornIn": {"type":"string"},
+                "actedIn": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                }
+            },
+            "required": ["id", "type", "name", "birthDate"]
+        }
+    }
+}

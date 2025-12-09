@@ -1,0 +1,196 @@
+
+@base <https://data.example.org/> .
+@prefix ex: <http://example.org/vocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+### COUNTRIES
+
+<country/us> a ex:Country ;
+    rdfs:label "United States"@en ;
+    ex:isoCode "US" .
+
+
+<country/uk> a ex:Country ;
+    rdfs:label "United Kingdom"@en ;
+    ex:isoCode "GB" .
+
+
+<country/fr> a ex:Country ;
+    rdfs:label "France"@en ;
+    ex:isoCode "FR" .
+
+
+### STUDIOS
+
+<studio/warner-bros> a ex:Studio ;
+    foaf:name "Warner Bros. Pictures"@en ;
+    ex:foundedYear "1923"^^xsd:gYear ;
+    ex:moviesProduced 12500 ;
+    ex:basedIn <country/us> .
+
+
+<studio/universal> a ex:Studio ;
+    foaf:name "Universal Pictures"@en ;
+    ex:foundedYear "1912"^^xsd:gYear ;
+    ex:moviesProduced 400 ;
+    ex:basedIn <country/us> .
+
+
+<studio/legendary> a ex:Studio ;
+    foaf:name "Legendary Pictures"@en ;
+    ex:foundedYear "2000"^^xsd:gYear ;
+    ex:moviesProduced 70 ;
+    ex:basedIn <country/us> .
+
+
+### CINEMAS
+
+<cinema/imax-london> a ex:Cinema ;
+    foaf:name "IMAX London"@en ;
+    ex:capacity 500 ;
+    ex:isLuxury true ;
+    ex:phone <tel:+441234567890> ;
+    ex:phone <tel:+442345678901> ;
+    ex:locatedIn <country/uk> .
+
+
+<cinema/amc-la> a ex:Cinema ;
+    foaf:name "AMC Los Angeles"@en ;
+    ex:capacity 350 ;
+    ex:isLuxury false ;
+    ex:locatedIn <country/us> .
+
+
+<cinema/le-grand-paris> a ex:Cinema ;
+    foaf:name "Le Grand Paris"@en ;
+    ex:capacity 220 ;
+    ex:isLuxury true ;
+    ex:phone <tel:+330987654321> ;
+    ex:locatedIn <country/fr> .
+
+
+### PEOPLE: DIRECTORS & ACTORS
+
+        
+<person/christopher-nolan> a ex:Director ;
+    foaf:name "Christopher Nolan"@en ;
+    ex:birthDate "1970-07-30"^^xsd:date ;
+    ex:activeSince "1998"^^xsd:gYear ;
+    ex:awardsCount 220 ;
+    ex:bornIn <country/uk> .
+
+
+        
+<person/denis-villeneuve> a ex:Director ;
+    foaf:name "Denis Villeneuve"@en ;
+    ex:birthDate "1967-10-03"^^xsd:date ;
+    ex:activeSince "1994"^^xsd:gYear ;
+    ex:awardsCount 160 ;
+    ex:bornIn <country/fr> .
+
+
+        
+<person/patty-jenkins> a ex:Director ;
+    foaf:name "Patty Jenkins"@en ;
+    ex:birthDate "1971-07-24"^^xsd:date ;
+    ex:activeSince "2003"^^xsd:gYear ;
+    ex:awardsCount 40 ;
+    ex:bornIn <country/us> .
+
+
+        
+<person/leonardo-dicaprio> a ex:Actor ;
+    foaf:name "Leonardo DiCaprio"@en ;
+    ex:birthDate "1974-11-11"^^xsd:date ;
+    ex:stageName "Leonardo DiCaprio"@en ;
+    ex:debutYear "1991"^^xsd:gYear ;
+    ex:bornIn <country/us> .
+
+
+        
+<person/amy-adams> a ex:Actor ;
+    foaf:name "Amy Adams"@en ;
+    ex:birthDate "1974-08-20"^^xsd:date ;
+    ex:stageName "Amy Adams"@en ;
+    ex:debutYear "1995"^^xsd:gYear ;
+    ex:bornIn <country/us> .
+
+
+        
+<person/gal-gadot> a ex:Actor ;
+    foaf:name "Gal Gadot"@en ;
+    ex:birthDate "1985-04-30"^^xsd:date ;
+    ex:stageName "Gal Gadot"@en ;
+    ex:debutYear "2007"^^xsd:gYear ;
+    ex:bornIn <country/us> .
+
+
+### MOVIES
+
+<movie/inception> a ex:Movie ;
+    dcterms:title "Inception"@en ;
+    ex:durationMinutes 148 ;
+    ex:releaseDate "2010-07-16"^^xsd:date ;
+    ex:directedBy <person/christopher-nolan> ;
+    ex:producedBy <studio/warner-bros> .
+
+
+<movie/arrival> a ex:Movie ;
+    dcterms:title "Arrival"@en ;
+    ex:durationMinutes 116 ;
+    ex:releaseDate "2016-11-11"^^xsd:date ;
+    ex:directedBy <person/denis-villeneuve> ;
+    ex:producedBy <studio/legendary> .
+
+
+<movie/wonder-woman> a ex:Movie ;
+    dcterms:title "Wonder Woman"@en ;
+    ex:durationMinutes 141 ;
+    ex:releaseDate "2017-06-02"^^xsd:date ;
+    ex:directedBy <person/patty-jenkins> ;
+    ex:producedBy <studio/warner-bros> .
+
+
+### SCREENINGS
+
+<screening/inc-lon-2024-06-01-2000> a ex:Screening ;
+    ex:shows <movie/inception> ;
+    ex:takesPlaceAt <cinema/imax-london> ;
+    ex:screeningDate "2024-06-01"^^xsd:date ;
+    ex:screeningTime "20:00:00"^^xsd:time ;
+    dcterms:language "en"^^xsd:language .
+
+
+<screening/arr-la-2024-06-02-1800> a ex:Screening ;
+    ex:shows <movie/arrival> ;
+    ex:takesPlaceAt <cinema/amc-la> ;
+    ex:screeningDate "2024-06-02"^^xsd:date ;
+    ex:screeningTime "18:00:00"^^xsd:time ;
+    dcterms:language "en"^^xsd:language .
+
+
+<screening/ww-par-2024-06-03-1900> a ex:Screening ;
+    ex:shows <movie/wonder-woman> ;
+    ex:takesPlaceAt <cinema/le-grand-paris> ;
+    ex:screeningDate "2024-06-03"^^xsd:date ;
+    ex:screeningTime "19:00:00"^^xsd:time ;
+    dcterms:language "fr"^^xsd:language .
+
+
+### ACTOR <-> MOVIE
+
+    <person/leonardo-dicaprio> ex:actedIn <movie/inception> .
+    
+    <person/amy-adams> ex:actedIn <movie/arrival> .
+    
+    <person/amy-adams> ex:actedIn <movie/inception> .
+    
+    <person/gal-gadot> ex:actedIn <movie/wonder-woman> .
+    
+    <person/gal-gadot> ex:actedIn <movie/arrival> .
+    

@@ -1,0 +1,272 @@
+{
+  "@context": {
+    "@base": "https://data.example.org/",
+    "@vocab": "http://example.org/vocabulary/",
+    "ex": "http://example.org/vocabulary/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "id": "@id",
+    "type": "@type",
+    
+    "isoCode": "ex:isoCode",
+
+    "label": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+
+    "name": {
+      "@id": "foaf:name",
+      "@container": "@language"
+    },
+
+    "stageName": {
+      "@id": "ex:stageName",
+      "@container": "@language"
+    },
+
+    "title": {
+      "@id": "dcterms:title",
+      "@container": "@language"
+    },
+
+    
+    "capacity": { "@id": "ex:capacity", "@type": "xsd:integer" },
+    "isLuxury": { "@id": "ex:isLuxury", "@type": "xsd:boolean" },
+
+    "phones": {
+      "@id":        "ex:phone",
+      "@type":      "@id",
+      "@container": "@set"
+    },
+
+    "foundedYear": {
+      "@id": "ex:foundedYear",
+      "@type": "xsd:gYear"
+    },
+    "moviesProduced": {
+      "@id": "ex:moviesProduced",
+      "@type": "xsd:integer"
+    },
+
+    "shows": {
+      "@id": "ex:shows",
+      "@type": "@id"
+    },
+    "takesPlaceAt": {
+      "@id": "ex:takesPlaceAt",
+      "@type": "@id"
+    },
+
+
+    "locatedIn": { "@id": "ex:locatedIn", "@type": "@id" },
+    "basedIn":   { "@id": "ex:basedIn",   "@type": "@id" },
+
+    "birthDate":   { "@id": "ex:birthDate",   "@type": "xsd:date" },
+    "activeSince": { "@id": "ex:activeSince", "@type": "xsd:gYear" },
+    "awardsCount": { "@id": "ex:awardsCount", "@type": "xsd:integer" },
+    
+    "debutYear":   { "@id": "ex:debutYear",   "@type": "xsd:gYear" },
+    "bornIn":      { "@id": "ex:bornIn",      "@type": "@id" },
+
+    
+    "durationMinutes":{ "@id": "ex:durationMinutes", "@type": "xsd:integer" },
+    "releaseDate":    { "@id": "ex:releaseDate",      "@type": "xsd:date" },
+    "directedBy":     { "@id": "ex:directedBy",       "@type": "@id" },
+    "producedBy":     { "@id": "ex:producedBy",       "@type": "@id" },
+
+    "screeningDate": { "@id": "ex:screeningDate", "@type": "xsd:date" },
+    "screeningTime": { "@id": "ex:screeningTime", "@type": "xsd:time" },
+    "language":      { "@id": "dcterms:language", "@type": "xsd:language" },
+
+    "actedIn": {
+      "@id": "ex:actedIn",
+      "@type": "@id",
+      "@container": "@set"
+    }
+  },
+
+  "@graph": [
+    { "id": "country/us", "type": "Country", "label": { "en": "United States" },  "isoCode": "US" },
+    { "id": "country/uk", "type": "Country", "label": { "en": "United Kingdom" }, "isoCode": "GB" },
+    { "id": "country/fr", "type": "Country", "label": { "en": "France" },         "isoCode": "FR" },
+    
+    {
+      "id": "studio/warner-bros",
+      "type": "Studio",
+      "name": { "en": "Warner Bros. Pictures" },
+      "foundedYear": 1923,
+      "moviesProduced": 12500,
+      "basedIn": "country/us"
+    },
+    {
+      "id": "studio/universal",
+      "type": "Studio",
+      "name": { "en": "Universal Pictures" },
+      "foundedYear": 1912,
+      "moviesProduced": 400,
+      "basedIn": "country/us"
+    },
+    {
+      "id": "studio/legendary",
+      "type": "Studio",
+      "name": { "en": "Legendary Pictures" },
+      "foundedYear": 2000,
+      "moviesProduced": 70,
+      "basedIn": "country/us"
+    },
+
+    {
+      "id": "cinema/imax-london",
+      "type": "Cinema",
+      "name": { "en": "IMAX London" },
+      "capacity": 500,
+      "isLuxury": true,
+      "phones": [
+        "tel:+441234567890",
+        "tel:+442345678901"
+      ],
+      "locatedIn": "country/uk"
+    },
+    {
+      "id": "cinema/amc-la",
+      "type": "Cinema",
+      "name": { "en": "AMC Los Angeles" },
+      "capacity": 350,
+      "isLuxury": false,
+      "phones": [],
+      "locatedIn": "country/us"
+    },
+    {
+      "id": "cinema/le-grand-paris",
+      "type": "Cinema",
+      "name": { "en": "Le Grand Paris" },
+      "capacity": 220,
+      "isLuxury": true,
+      "phones": [
+        "tel:+330987654321"
+      ],
+      "locatedIn": "country/fr"
+    },
+
+    {
+      "id": "person/christopher-nolan",
+      "type": "Director",
+      "name": { "en": "Christopher Nolan" },
+      "birthDate": "1970-07-30",
+      "activeSince": 1998,
+      "awardsCount": 220,
+      "bornIn": "country/uk",
+      "actedIn": []
+    },
+    {
+      "id": "person/denis-villeneuve",
+      "type": "Director",
+      "name": { "en": "Denis Villeneuve" },
+      "birthDate": "1967-10-03",
+      "activeSince": 1994,
+      "awardsCount": 160,
+      "bornIn": "country/fr",
+      "actedIn": []
+    },
+    {
+      "id": "person/patty-jenkins",
+      "type": "Director",
+      "name": { "en": "Patty Jenkins" },
+      "birthDate": "1971-07-24",
+      "activeSince": 2003,
+      "awardsCount": 40,
+      "bornIn": "country/us",
+      "actedIn": []
+    },
+    {
+      "id": "person/leonardo-dicaprio",
+      "type": "Actor",
+      "name": { "en": "Leonardo DiCaprio" },
+      "birthDate": "1974-11-11",
+      "stageName": { "en": "Leonardo DiCaprio" },
+      "debutYear": 1991,
+      "bornIn": "country/us",
+      "actedIn": ["movie/inception"]
+    },
+    {
+      "id": "person/amy-adams",
+      "type": "Actor",
+      "name": { "en": "Amy Adams" },
+      "birthDate": "1974-08-20",
+      "stageName": { "en": "Amy Adams" },
+      "debutYear": 1995,
+      "bornIn": "country/us",
+      "actedIn": ["movie/arrival", "movie/inception"]
+    },
+    {
+      "id": "person/gal-gadot",
+      "type": "Actor",
+      "name": { "en": "Gal Gadot" },
+      "birthDate": "1985-04-30",
+      "stageName": { "en": "Gal Gadot" },
+      "debutYear": 2007,
+      "bornIn": "country/us",
+      "actedIn": ["movie/wonder-woman", "movie/arrival"]
+    },
+
+    {
+      "id": "movie/inception",
+      "type": "Movie",
+      "title": { "en": "Inception" },
+      "durationMinutes": 148,
+      "releaseDate": "2010-07-16",
+      "directedBy": "person/christopher-nolan",
+      "producedBy": "studio/warner-bros"
+    },
+    {
+      "id": "movie/arrival",
+      "type": "Movie",
+      "title": { "en": "Arrival" },
+      "durationMinutes": 116,
+      "releaseDate": "2016-11-11",
+      "directedBy": "person/denis-villeneuve",
+      "producedBy": "studio/legendary"
+    },
+    {
+      "id": "movie/wonder-woman",
+      "type": "Movie",
+      "title": { "en": "Wonder Woman" },
+      "durationMinutes": 141,
+      "releaseDate": "2017-06-02",
+      "directedBy": "person/patty-jenkins",
+      "producedBy": "studio/warner-bros"
+    },
+
+    {
+      "id": "screening/inc-lon-2024-06-01-2000",
+      "type": "Screening",
+      "shows": "movie/inception",
+      "takesPlaceAt": "cinema/imax-london",
+      "screeningDate": "2024-06-01",
+      "screeningTime": "20:00:00",
+      "language": "en"
+    },
+    {
+      "id": "screening/arr-la-2024-06-02-1800",
+      "type": "Screening",
+      "shows": "movie/arrival",
+      "takesPlaceAt": "cinema/amc-la",
+      "screeningDate": "2024-06-02",
+      "screeningTime": "18:00:00",
+      "language": "en"
+    },
+    {
+      "id": "screening/ww-par-2024-06-03-1900",
+      "type": "Screening",
+      "shows": "movie/wonder-woman",
+      "takesPlaceAt": "cinema/le-grand-paris",
+      "screeningDate": "2024-06-03",
+      "screeningTime": "19:00:00",
+      "language": "fr"
+    }
+  ]
+}

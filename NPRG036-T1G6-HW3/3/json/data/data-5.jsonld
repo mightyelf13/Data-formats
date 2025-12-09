@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@base": "https://data.example.org/",
+    "@vocab": "http://example.org/vocabulary/",
+    "ex": "http://example.org/vocabulary/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "id": "@id",
+    "type": "@type",
+    
+    "isoCode": "ex:isoCode",
+
+    "label": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+
+    "name": {
+      "@id": "foaf:name",
+      "@container": "@language"
+    },
+    "birthDate":   { "@id": "ex:birthDate",   "@type": "xsd:date" },
+    "activeSince": { "@id": "ex:activeSince", "@type": "xsd:gYear" },
+    "awardsCount": { "@id": "ex:awardsCount", "@type": "xsd:integer" },
+ 
+    "bornIn":      { "@id": "ex:bornIn",      "@type": "@id" }
+  },
+
+  "@graph": [
+    { "id": "country/us", "type": "Country", "label": { "en": "United States" },  "isoCode": "US" },
+    { "id": "country/uk", "type": "Country", "label": { "en": "United Kingdom" }, "isoCode": "GB" },
+    { "id": "country/fr", "type": "Country", "label": { "en": "France" },         "isoCode": "FR" },
+
+    {
+      "id": "person/christopher-nolan",
+      "type": "Director",
+      "name": { "en": "Christopher Nolan" },
+      "birthDate": "1970-07-30",
+      "activeSince": 1998,
+      "awardsCount": 220,
+      "bornIn": "country/uk"
+    },
+    {
+      "id": "person/denis-villeneuve",
+      "type": "Director",
+      "name": { "en": "Denis Villeneuve" },
+      "birthDate": "1967-10-03",
+      "activeSince": 1994,
+      "awardsCount": 160,
+      "bornIn": "country/fr"
+    },
+    {
+      "id": "person/patty-jenkins",
+      "type": "Director",
+      "name": { "en": "Patty Jenkins" },
+      "birthDate": "1971-07-24",
+      "activeSince": 2003,
+      "awardsCount": 40,
+      "bornIn": "country/us"
+    }
+  ]
+}

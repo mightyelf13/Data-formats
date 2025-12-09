@@ -1,148 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MovieDatabase xmlns="http://example.com/schema-1"
+<MovieDatabase xmlns="http://example.com/movies"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://example.com/schema-1 ../schemas/schema-1.xsd">
+    xsi:schemaLocation="http://example.com/movies ../schemas/schema-1.xsd">
     
     <Countries>
-        <Country id="c-us">
-            <Name>United States</Name>
+        <Country id="country_us">
+            <Name xml:lang="en">United States</Name>
             <Code>US</Code>
         </Country>
-        <Country id="c-gb">
-            <Name>United Kingdom</Name>
+        <Country id="country_uk">
+            <Name xml:lang="en">United Kingdom</Name>
             <Code>GB</Code>
         </Country>
-        <Country id="c-de">
-            <Name>Deutschland</Name>
-            <Code>DE</Code>
+        <Country id="country_fr">
+            <Name xml:lang="en">France</Name>
+            <Code>FR</Code>
         </Country>
     </Countries>
 
     <Studios>
-        <Studio id="s-wb">
-            <Name>Warner Bros. Pictures</Name>
+        <Studio id="studio_warner-bros">
+            <Name xml:lang="en">Warner Bros. Pictures</Name>
             <FoundedYear>1923</FoundedYear>
-            <MoviesProduced>200</MoviesProduced>
-            <Location ref="c-us"/>
+            <MoviesProduced>12500</MoviesProduced>
+            <Location ref="country_us"/>
         </Studio>
 
-        <Studio id="s-pinewood">
-            <Name>Pinewood Studios</Name>
-            <FoundedYear>1936</FoundedYear>
-            <MoviesProduced>150</MoviesProduced>
-            <Location ref="c-gb"/>
-        </Studio>
-
-        <Studio id="s-babelsberg">
-            <Name>Studio Babelsberg</Name>
+        <Studio id="studio_universal">
+            <Name xml:lang="en">Universal Pictures</Name>
             <FoundedYear>1912</FoundedYear>
-            <MoviesProduced>120</MoviesProduced>
-            <Location ref="c-de"/>
+            <MoviesProduced>400</MoviesProduced>
+            <Location ref="country_us"/>
+        </Studio>
+
+        <Studio id="studio_legendary">
+            <Name xml:lang="en">Legendary Pictures</Name>
+            <FoundedYear>2000</FoundedYear>
+            <MoviesProduced>70</MoviesProduced>
+            <Location ref="country_us"/>
         </Studio>
     </Studios>
 
     <Cinemas>
-        <Cinema id="cin-berlin">
-            <Name>IMAX Berlin</Name>
+        <Cinema id="cinema_imax-london">
+            <Name xml:lang="en">IMAX London</Name>
             <Capacity>500</Capacity>
             <Luxury>true</Luxury>
-            <Phone>+49-30-555-000</Phone>
-            <Location ref="c-de"/>
+            <Phone>+441234567890</Phone>
+            <Phone>+442345678901</Phone>
+            <Location ref="country_uk"/>
         </Cinema>
 
-        <Cinema id="cin-london">
-            <Name>London Central Cinema</Name>
+        <Cinema id="cinema_amc-la">
+            <Name xml:lang="en">AMC Los Angeles</Name>
             <Capacity>350</Capacity>
             <Luxury>false</Luxury>
-            <Phone>+44-20-222-3333</Phone>
-            <Location ref="c-gb"/>
+            <Location ref="country_us"/>
         </Cinema>
 
-        <Cinema id="cin-nyc">
-            <Name>NYC Downtown Cinema</Name>
-            <Capacity>420</Capacity>
+        <Cinema id="cinema_le-grand-paris">
+            <Name xml:lang="en">Le Grand Paris</Name>
+            <Capacity>220</Capacity>
             <Luxury>true</Luxury>
-            <Phone>+1-212-100-2000</Phone>
-            <Location ref="c-us"/>
+            <Phone>+330987654321</Phone>
+            <Location ref="country_fr"/>
         </Cinema>
     </Cinemas>
 
     <People>
-        <Person id="p-nolan" type="Director">
-            <FullName>Christopher Nolan</FullName>
+        <Person id="person_christopher-nolan" type="Director">
+            <FullName xml:lang="en">Christopher Nolan</FullName>
             <BirthDate>1970-07-30</BirthDate>
             <ActiveSince>1998</ActiveSince>
-            <AwardsCount>10</AwardsCount>
-            <BornIn ref="c-gb"/>
+            <AwardsCount>220</AwardsCount>
+            <BornIn ref="country_uk"/>
         </Person>
 
-        <Person id="p-wachowski" type="Director">
-            <FullName>Lana Wachowski</FullName>
-            <BirthDate>1965-06-21</BirthDate>
+        <Person id="person_denis-villeneuve" type="Director">
+            <FullName xml:lang="en">Denis Villeneuve</FullName>
+            <BirthDate>1967-10-03</BirthDate>
             <ActiveSince>1994</ActiveSince>
-            <AwardsCount>5</AwardsCount>
-            <BornIn ref="c-us"/>
+            <AwardsCount>160</AwardsCount>
+            <BornIn ref="country_fr"/>
         </Person>
 
-        <Person id="p-dicaprio" type="Actor">
-            <FullName>Leonardo DiCaprio</FullName>
+        <Person id="person_patty-jenkins" type="Director">
+            <FullName xml:lang="en">Patty Jenkins</FullName>
+            <BirthDate>1971-07-24</BirthDate>
+            <ActiveSince>2003</ActiveSince>
+            <AwardsCount>40</AwardsCount>
+            <BornIn ref="country_us"/>
+        </Person>
+
+        <Person id="person_leonardo-dicaprio" type="Actor">
+            <FullName xml:lang="en">Leonardo DiCaprio</FullName>
             <BirthDate>1974-11-11</BirthDate>
-            <StageName>Leo</StageName>
+            <StageName xml:lang="en">Leonardo DiCaprio</StageName>
             <DebutYear>1991</DebutYear>
-            <BornIn ref="c-us"/>
-            <ActedIn ref="m-inception"/>
+            <BornIn ref="country_us"/>
+            <ActedIn ref="movie_inception"/>
+        </Person>
+
+        <Person id="person_amy-adams" type="Actor">
+            <FullName xml:lang="en">Amy Adams</FullName>
+            <BirthDate>1974-08-20</BirthDate>
+            <StageName xml:lang="en">Amy Adams</StageName>
+            <DebutYear>1995</DebutYear>
+            <BornIn ref="country_us"/>
+            <ActedIn ref="movie_arrival"/>
+            <ActedIn ref="movie_inception"/>
+        </Person>
+
+        <Person id="person_gal-gadot" type="Actor">
+            <FullName xml:lang="en">Gal Gadot</FullName>
+            <BirthDate>1985-04-30</BirthDate>
+            <StageName xml:lang="en">Gal Gadot</StageName>
+            <DebutYear>2007</DebutYear>
+            <BornIn ref="country_us"/>
+            <ActedIn ref="movie_wonder-woman"/>
+            <ActedIn ref="movie_arrival"/>
         </Person>
     </People>
 
     <Movies>
-        <Movie id="m-inception">
+        <Movie id="movie_inception">
             <Title xml:lang="en">Inception</Title>
             <Duration>148</Duration>
             <ReleaseDate>2010-07-16</ReleaseDate>
-            <DirectedBy ref="p-nolan"/>
-            <ProducedBy ref="s-wb"/>
+            <DirectedBy ref="person_christopher-nolan"/>
+            <ProducedBy ref="studio_warner-bros"/>
         </Movie>
 
-        <Movie id="m-matrix">
-            <Title>The Matrix</Title>
-            <Duration>136</Duration>
-            <ReleaseDate>1999-03-31</ReleaseDate>
-            <DirectedBy ref="p-wachowski"/>
-            <ProducedBy ref="s-wb"/>
+        <Movie id="movie_arrival">
+            <Title xml:lang="en">Arrival</Title>
+            <Duration>116</Duration>
+            <ReleaseDate>2016-11-11</ReleaseDate>
+            <DirectedBy ref="person_denis-villeneuve"/>
+            <ProducedBy ref="studio_legendary"/>
         </Movie>
 
-        <Movie id="m-tenet">
-            <Title>Tenet</Title>
-            <Duration>150</Duration>
-            <ReleaseDate>2020-08-26</ReleaseDate>
-            <DirectedBy ref="p-nolan"/>
-            <ProducedBy ref="s-babelsberg"/>
+        <Movie id="movie_wonder-woman">
+            <Title xml:lang="en">Wonder Woman</Title>
+            <Duration>141</Duration>
+            <ReleaseDate>2017-06-02</ReleaseDate>
+            <DirectedBy ref="person_patty-jenkins"/>
+            <ProducedBy ref="studio_warner-bros"/>
         </Movie>
     </Movies>
 
     <Screenings>
-        <Screening id="scr1">
-            <Date>2024-04-01</Date>
-            <Time>19:30:00</Time>
-            <Language>en</Language>
-            <Shows ref="m-inception"/>
-            <TakesPlaceAt ref="cin-berlin"/>
-        </Screening>
-
-        <Screening id="scr2">
-            <Date>2024-04-02</Date>
+        <Screening id="screening_inc-lon-2024-06-01-2000">
+            <Date>2024-06-01</Date>
             <Time>20:00:00</Time>
             <Language>en</Language>
-            <Shows ref="m-matrix"/>
-            <TakesPlaceAt ref="cin-london"/>
+            <Shows ref="movie_inception"/>
+            <TakesPlaceAt ref="cinema_imax-london"/>
         </Screening>
 
-        <Screening id="scr3">
-            <Date>2024-04-03</Date>
-            <Time>21:15:00</Time>
-            <Language>de</Language>
-            <Shows ref="m-tenet"/>
-            <TakesPlaceAt ref="cin-nyc"/>
+        <Screening id="screening_arr-la-2024-06-02-1800">
+            <Date>2024-06-02</Date>
+            <Time>18:00:00</Time>
+            <Language>en</Language>
+            <Shows ref="movie_arrival"/>
+            <TakesPlaceAt ref="cinema_amc-la"/>
+        </Screening>
+
+        <Screening id="screening_ww-par-2024-06-03-1900">
+            <Date>2024-06-03</Date>
+            <Time>19:00:00</Time>
+            <Language>fr</Language>
+            <Shows ref="movie_wonder-woman"/>
+            <TakesPlaceAt ref="cinema_le-grand-paris"/>
         </Screening>
     </Screenings>
 

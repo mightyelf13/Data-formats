@@ -1,4 +1,8 @@
-(: Q4 - Return all Countries that have at least one Cinema
-located in that country :)
+(: Q4 - Return all Countries that have at least one Cinema located in that country :)
 
-//Country[@id =/MovieDatabase/Cinemas/Cinema/Location/@ref]
+declare namespace m = "http://example.com/movies";
+
+//m:Country[
+    @id 
+    = /m:MovieDatabase/m:Cinemas/m:Cinema/m:Location/@ref
+]

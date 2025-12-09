@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:m="http://example.com/movie-schema"
+                xmlns:m="http://example.com/movies"
                 xmlns:xml="http://www.w3.org/XML/1998/namespace"
                 version="1.0">
 
     <xsl:output method="html" encoding="UTF-8" indent="yes"/>
     <xsl:strip-space elements="*"/>
 
-    <!-- Root: build HTML skeleton -->
     <xsl:template match="/">
         <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
         <html lang="en">
@@ -21,13 +20,11 @@
         </html>
     </xsl:template>
 
-    <!-- MovieDatabase: entry point into the data -->
     <xsl:template match="m:MovieDatabase">
         <h2>Movies</h2>
         <xsl:apply-templates select="m:Movies/m:Movie"/>
     </xsl:template>
 
-    <!-- Movie: show title, director, studio, and screenings -->
     <xsl:template match="m:Movie">
         <xsl:variable name="movieId" select="@id"/>
         <xsl:variable name="director"
@@ -38,10 +35,10 @@
             select="/m:MovieDatabase/m:Screenings/m:Screening[m:Shows/@ref = $movieId]"/>
 
         <div class="movie">
-            <h3>
-                <!-- Prefer English title if present, otherwise first title -->
-                <xsl:value-of select="m:Title[@xml:lang = 'en'][1] | m:Title[1]"/>
+            <h3 xml:lang="{m:Title[1]/@xml:lang}">
+                <xsl:value-of select="m:Title[1]"/>
             </h3>
+
 
             <p>
                 <strong>Release date:</strong>
@@ -57,19 +54,25 @@
             <p>
                 <strong>Director:</strong>
                 <xsl:text> </xsl:text>
-                <xsl:value-of select="$director/m:FullName[@xml:lang = 'en'][1] | $director/m:FullName[1]"/>
+                <span xml:lang="{$director/m:FullName[1]/@xml:lang}">
+                    <xsl:value-of select="$director/m:FullName[1]"/>
+                </span>
             </p>
+
 
             <p>
                 <strong>Studio:</strong>
                 <xsl:text> </xsl:text>
-                <xsl:value-of select="$studio/m:Name[@xml:lang = 'en'][1] | $studio/m:Name[1]"/>
+                <span xml:lang="{$studio/m:Name[1]/@xml:lang}">
+                    <xsl:value-of select="$studio/m:Name[1]"/>
+                </span>
                 <xsl:text> (Founded: </xsl:text>
                 <xsl:value-of select="$studio/m:FoundedYear"/>
                 <xsl:text>, Movies produced: </xsl:text>
                 <xsl:value-of select="$studio/m:MoviesProduced"/>
                 <xsl:text>)</xsl:text>
             </p>
+
 
             <xsl:if test="$screenings">
                 <h4>Screenings</h4>
@@ -87,9 +90,14 @@
                             <xsl:text> — Language: </xsl:text>
                             <xsl:value-of select="m:Language"/>
                             <xsl:text>; Cinema: </xsl:text>
-                            <xsl:value-of select="$cinema/m:Name[@xml:lang = 'en'][1] | $cinema/m:Name[1]"/>
+                            <span xml:lang="{$cinema/m:Name[1]/@xml:lang}">
+                                <xsl:value-of select="$cinema/m:Name[1]"/>
+                            </span>
+
                             <xsl:text> (</xsl:text>
-                            <xsl:value-of select="$country/m:Name[@xml:lang = 'en'][1] | $country/m:Name[1]"/>
+                            <span xml:lang="{$country/m:Name[1]/@xml:lang}">
+                                <xsl:value-of select="$country/m:Name[1]"/>
+                            </span>
                             <xsl:text>)</xsl:text>
                         </li>
                     </xsl:for-each>
@@ -101,12 +109,3 @@
     <xsl:template match="text()"/>
 
 </xsl:stylesheet>
-
-<!--
-For each movie, list:
-  - title (preferring English),
-  - release date and duration,
-  - director name,
-  - studio (with founded year and movies produced),
-  - all screenings (date, time, language, cinema, and country).
--->

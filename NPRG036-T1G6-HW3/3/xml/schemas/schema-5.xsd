@@ -16,11 +16,11 @@
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:element name="CinemasAndCountries">
+    <xs:element name="DirectorsAndCountries">
         <xs:complexType>
             <xs:all>
                 <xs:element ref="Countries"/>
-                <xs:element ref="Cinemas"/>
+                <xs:element ref="Directors"/>
             </xs:all>
         </xs:complexType>
     </xs:element>
@@ -43,22 +43,22 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="Cinemas">
+    <xs:element name="Directors">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="Cinema" maxOccurs="unbounded"/>
+                <xs:element ref="Director" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="Cinema">
+    <xs:element name="Director">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Name" type="LocalizableString" maxOccurs="unbounded"/>
-                <xs:element name="Capacity" type="xs:integer"/>
-                <xs:element name="Luxury" type="xs:boolean"/>
-                <xs:element name="Phone" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
-                <xs:element name="Location" type="CountryRefType"/>
+                <xs:element name="AwardsCount" type="xs:int" minOccurs="0"/>
+                <xs:element name="ActiveSince" type="xs:gYear" minOccurs="0"/>
+                <xs:element name="FullName" type="LocalizableString" maxOccurs="unbounded"/>
+                <xs:element name="BirthDate" type="xs:date"/>
+                <xs:element name="BornIn" type="CountryRefType" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:ID" use="required"/>
         </xs:complexType>

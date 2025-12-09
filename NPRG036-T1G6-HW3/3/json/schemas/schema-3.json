@@ -1,0 +1,73 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/json/schema-3",
+    "title": "Movie database hierarchy",
+    "type": "object",
+    "additionalProperties": false,
+
+    "properties": {
+        "@context": {
+            "type": ["object", "string"]
+        },
+        
+        "@graph": {
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    { "$ref": "#/definitions/Country" },
+                    { "$ref": "#/definitions/Cinema" }
+                ]
+            }   
+        }
+    },
+
+    "required": [
+        "@graph"
+    ],
+
+    "definitions": {
+        "LocalizedString": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z-]+$": { "type": "string" }
+            },
+            "additionalProperties": false
+        },
+
+        "Country": {
+            "type": "object", 
+            "additionalProperties": false,
+            "properties": {
+                "id": { "type": "string"},
+                "type": {
+                    "type": "string",
+                    "enum": ["Country"]
+                },
+                "label": {"$ref": "#/definitions/LocalizedString"},
+                "isoCode": {"type": "string"}
+            },
+            "required": ["id", "type", "label", "isoCode"]
+        },
+
+        "Cinema": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+                "id": {"type": "string"}, 
+                "type": {
+                    "type": "string",
+                    "enum": ["Cinema"]
+                },
+                "name": { "$ref": "#/definitions/LocalizedString"},
+                "capacity": {"type": "integer", "minimum": 0},
+                "isLuxury": {"type": "boolean"},
+                "phones": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "locatedIn": {"type": "string"}
+            },
+            "required": ["id", "type", "name", "capacity", "isLuxury", "locatedIn"]
+        }
+    }
+}
