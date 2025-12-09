@@ -1,9 +1,0 @@
-(: Q1 - Return all movie titles that are longer than 120 minutes AND are directed by a person with at least 3 awards :)
-
-declare namespace m = "http://example.com/movies";
-
-//m:Movie[
-    m:Duration > 120
-    and m:DirectedBy/@ref
-        = /m:MovieDatabase/m:People/m:Person[m:AwardsCount >= 3]/@id
-]/m:Title

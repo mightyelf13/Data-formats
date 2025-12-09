@@ -1,503 +1,157 @@
 {
   "@context": "http://www.w3.org/ns/csvw",
   "@type": "TableGroup",
-  "@id": "https://example.org/movies/tableGroup",
   "tables": [
     {
-      "@type": "Table",
-      "@id": "https://example.org/movies/Person",
-      "url": "Person.csv",
+      "url": "data-1.csv",
       "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/person/{personID}",
+        "aboutUrl": "https://data.example.org/country/{code}",
         "columns": [
           {
-            "@type": "Column",
-            "name": "personID",
-            "titles": "personID",
-            "dc:description": "Identifier of the person",
+            "name": "code",
             "datatype": "string",
-            "required": true,
-            "propertyUrl": "rdf:type",
-            "valueUrl": "https://example.org/vocab/Person"
+            "suppressOutput": true
           },
           {
-            "@type": "Column",
-            "name": "fullName",
-            "titles": "fullName",
-            "dc:description": "Full legal name of the person",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "https://schema.org/name"
+            "name": "label",
+            "datatype": {
+              "base": "string",
+              "lang": "en"
+            },
+            "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
           },
           {
-            "@type": "Column",
-            "name": "birthDate",
-            "titles": "birthDate",
-            "dc:description": "Date of birth of the person",
-            "datatype": "date",
-            "required": true,
-            "propertyUrl": "https://schema.org/birthDate"
+            "name": "isoCode",
+            "datatype": "string",
+            "propertyUrl": "http://example.org/vocabulary/isoCode"
           },
           {
-            "@type": "Column",
-            "name": "countryCode",
-            "titles": "countryCode",
-            "dc:description": "Code of the country where the person was born",
-            "datatype": "string",
-            "required": false,
-            "aboutUrl": "https://example.org/country/{countryCode}",
-            "propertyUrl": "https://example.org/vocab/bornIn",
-            "valueUrl": "https://example.org/person/{personID}"
+            "virtual": true,
+            "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "valueUrl": "http://example.org/vocabulary/Country"
           }
         ],
-        "primaryKey": "personID",
-        "foreignKeys": [
-          {
-            "columnReference": "countryCode",
-            "reference": {
-              "resource": "Country.csv",
-              "columnReference": "code"
-            }
-          }
-        ]
+        "primaryKey": "code"
       }
     },
     {
-      "@type": "Table",
-      "@id": "https://example.org/movies/Actor",
-      "url": "Actor.csv",
+      "url": "data-2.csv",
       "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/actor/{actorID}",
+        "aboutUrl": "https://data.example.org/studio/{studioID}",
         "columns": [
           {
-            "@type": "Column",
-            "name": "actorID",
-            "titles": "actorID",
-            "dc:description": "Identifier of the actor (also a person ID)",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "rdf:type",
-            "valueUrl": "https://example.org/vocab/Actor"
-          },
-          {
-            "@type": "Column",
-            "name": "stageName",
-            "titles": "stageName",
-            "dc:description": "Stage name of the actor",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "https://example.org/vocab/stageName"
-          },
-          {
-            "@type": "Column",
-            "name": "debutYear",
-            "titles": "debutYear",
-            "dc:description": "Year of the actor's debut",
-            "datatype": "integer",
-            "required": true,
-            "propertyUrl": "https://example.org/vocab/debutYear"
-          }
-        ],
-        "primaryKey": "actorID",
-        "foreignKeys": [
-          {
-            "columnReference": "actorID",
-            "reference": {
-              "resource": "Person.csv",
-              "columnReference": "personID"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "Table",
-      "@id": "https://example.org/movies/Director",
-      "url": "Director.csv",
-      "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/director/{directorID}",
-        "columns": [
-          {
-            "@type": "Column",
-            "name": "directorID",
-            "titles": "directorID",
-            "dc:description": "Identifier of the director (also a person ID)",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "rdf:type",
-            "valueUrl": "https://example.org/vocab/Director"
-          },
-          {
-            "@type": "Column",
-            "name": "activeSince",
-            "titles": "activeSince",
-            "dc:description": "Year the director became active",
-            "datatype": "integer",
-            "required": true,
-            "propertyUrl": "https://example.org/vocab/activeSince"
-          },
-          {
-            "@type": "Column",
-            "name": "awardsCount",
-            "titles": "awardsCount",
-            "dc:description": "Number of major awards",
-            "datatype": "integer",
-            "required": true,
-            "propertyUrl": "https://example.org/vocab/awardsCount"
-          }
-        ],
-        "primaryKey": "directorID",
-        "foreignKeys": [
-          {
-            "columnReference": "directorID",
-            "reference": {
-              "resource": "Person.csv",
-              "columnReference": "personID"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "Table",
-      "@id": "https://example.org/movies/Movie",
-      "url": "Movie.csv",
-      "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/movie/{movieID}",
-        "columns": [
-          {
-            "@type": "Column",
-            "name": "movieID",
-            "titles": "movieID",
-            "dc:description": "Identifier of the movie",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "rdf:type",
-            "valueUrl": "https://schema.org/Movie"
-          },
-          {
-            "@type": "Column",
-            "name": "title",
-            "titles": "title",
-            "dc:description": "Title of the movie",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "https://schema.org/name"
-          },
-          {
-            "@type": "Column",
-            "name": "duration",
-            "titles": "duration",
-            "dc:description": "Duration of the movie in minutes",
-            "datatype": "integer",
-            "required": true,
-            "propertyUrl": "https://schema.org/duration"
-          },
-          {
-            "@type": "Column",
-            "name": "releaseDate",
-            "titles": "releaseDate",
-            "dc:description": "Release date of the movie",
-            "datatype": "date",
-            "required": true,
-            "propertyUrl": "https://schema.org/datePublished"
-          },
-          {
-            "@type": "Column",
-            "name": "directorID",
-            "titles": "directorID",
-            "dc:description": "Identifier of the director",
-            "datatype": "string",
-            "required": true,
-            "aboutUrl": "https://example.org/director/{directorID}",
-            "propertyUrl": "https://schema.org/director",
-            "valueUrl": "https://example.org/director/{directorID}"
-          },
-          {
-            "@type": "Column",
             "name": "studioID",
-            "titles": "studioID",
-            "dc:description": "Identifier of the producing studio",
             "datatype": "string",
-            "required": true,
-            "aboutUrl": "https://example.org/studio/{studioID}",
-            "propertyUrl": "https://example.org/vocab/producedBy",
-            "valueUrl": "https://example.org/studio/{studioID}"
-          }
-        ],
-        "primaryKey": "movieID",
-        "foreignKeys": [
-          {
-            "columnReference": "directorID",
-            "reference": {
-              "resource": "Director.csv",
-              "columnReference": "directorID"
-            }
+            "suppressOutput": true
           },
           {
-            "columnReference": "studioID",
-            "reference": {
-              "resource": "Studio.csv",
-              "columnReference": "studioID"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "Table",
-      "@id": "https://example.org/movies/Studio",
-      "url": "Studio.csv",
-      "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/studio/{studioID}",
-        "columns": [
-          {
-            "@type": "Column",
-            "name": "studioID",
-            "titles": "studioID",
-            "dc:description": "Identifier of the studio",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "rdf:type",
-            "valueUrl": "https://example.org/vocab/Studio"
+            "name": "studioName",
+            "datatype": {
+              "base": "string",
+              "lang": "en"
+            },
+            "propertyUrl": "http://xmlns.com/foaf/0.1/name"
           },
           {
-            "@type": "Column",
-            "name": "name",
-            "titles": "name",
-            "dc:description": "Name of the studio",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "https://schema.org/name"
-          },
-          {
-            "@type": "Column",
             "name": "foundedYear",
-            "titles": "foundedYear",
-            "dc:description": "Year the studio was founded",
-            "datatype": "integer",
-            "required": true,
-            "propertyUrl": "https://schema.org/foundingDate"
+            "datatype": "gYear",
+            "propertyUrl": "http://example.org/vocabulary/foundedYear"
           },
           {
-            "@type": "Column",
             "name": "moviesProduced",
-            "titles": "moviesProduced",
-            "dc:description": "Total number of movies produced",
             "datatype": "integer",
-            "required": true,
-            "propertyUrl": "https://example.org/vocab/moviesProduced"
+            "propertyUrl": "http://example.org/vocabulary/moviesProduced"
           },
           {
-            "@type": "Column",
             "name": "countryCode",
-            "titles": "countryCode",
-            "dc:description": "Code of the country where the studio is located",
             "datatype": "string",
-            "required": true,
-            "aboutUrl": "https://example.org/country/{countryCode}",
-            "propertyUrl": "https://schema.org/addressCountry",
-            "valueUrl": "https://example.org/country/{countryCode}"
+            "propertyUrl": "http://example.org/vocabulary/basedIn",
+            "valueUrl": "https://data.example.org/country/{countryCode}"
+          },
+          {
+            "virtual": true,
+            "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "valueUrl": "http://example.org/vocabulary/Studio"
           }
         ],
         "primaryKey": "studioID",
         "foreignKeys": [
           {
-            "columnReference": "countryCode",
+            "columns": "countryCode",
             "reference": {
-              "resource": "Country.csv",
-              "columnReference": "code"
+              "resource": "data-1.csv",
+              "columns": "code"
             }
           }
         ]
       }
     },
     {
-      "@type": "Table",
-      "@id": "https://example.org/movies/Cinema",
-      "url": "Cinema.csv",
+      "url": "data-3.csv",
       "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/cinema/{cinemaID}",
+        "aboutUrl": "https://data.example.org/cinema/{cinemaID}",
         "columns": [
           {
-            "@type": "Column",
             "name": "cinemaID",
-            "titles": "cinemaID",
-            "dc:description": "Identifier of the cinema",
             "datatype": "string",
-            "required": true,
-            "propertyUrl": "rdf:type",
-            "valueUrl": "https://example.org/vocab/Cinema"
+            "suppressOutput": true
           },
           {
-            "@type": "Column",
-            "name": "name",
-            "titles": "name",
-            "dc:description": "Name of the cinema",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "https://schema.org/name"
+            "name": "cinemaName",
+            "datatype": {
+              "base": "string",
+              "lang": "en"
+            },
+            "propertyUrl": "http://xmlns.com/foaf/0.1/name"
           },
           {
-            "@type": "Column",
             "name": "capacity",
-            "titles": "capacity",
-            "dc:description": "Seating capacity of the cinema",
             "datatype": "integer",
-            "required": true,
-            "propertyUrl": "https://example.org/vocab/capacity"
+            "propertyUrl": "http://example.org/vocabulary/capacity"
           },
           {
-            "@type": "Column",
-            "name": "luxury",
-            "titles": "luxury",
-            "dc:description": "Whether the cinema is a luxury venue",
+            "name": "isLuxury",
             "datatype": "boolean",
-            "required": true,
-            "propertyUrl": "https://example.org/vocab/luxury"
+            "propertyUrl": "http://example.org/vocabulary/isLuxury"
           },
           {
-            "@type": "Column",
             "name": "countryCode",
-            "titles": "countryCode",
-            "dc:description": "Code of the country where the cinema is located",
             "datatype": "string",
-            "required": true,
-            "aboutUrl": "https://example.org/country/{countryCode}",
-            "propertyUrl": "https://schema.org/addressCountry",
-            "valueUrl": "https://example.org/country/{countryCode}"
+            "propertyUrl": "http://example.org/vocabulary/locatedIn",
+            "valueUrl": "https://data.example.org/country/{countryCode}"
+          },
+          {
+            "virtual": true,
+            "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "valueUrl": "http://example.org/vocabulary/Cinema"
           }
         ],
         "primaryKey": "cinemaID",
         "foreignKeys": [
           {
-            "columnReference": "countryCode",
+            "columns": "countryCode",
             "reference": {
-              "resource": "Country.csv",
-              "columnReference": "code"
+              "resource": "data-1.csv",
+              "columns": "code"
             }
           }
         ]
       }
     },
     {
-      "@type": "Table",
-      "@id": "https://example.org/movies/Screening",
-      "url": "Screening.csv",
+      "url": "data-4.csv",
       "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/screening/{screeningID}",
+        "aboutUrl": "https://data.example.org/cinema/{cinemaID}",
         "columns": [
           {
-            "@type": "Column",
-            "name": "screeningID",
-            "titles": "screeningID",
-            "dc:description": "Identifier of the screening",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "rdf:type",
-            "valueUrl": "https://example.org/vocab/Screening"
-          },
-          {
-            "@type": "Column",
-            "name": "date",
-            "titles": "date",
-            "dc:description": "Date of the screening",
-            "datatype": "date",
-            "required": true,
-            "propertyUrl": "https://schema.org/startDate"
-          },
-          {
-            "@type": "Column",
-            "name": "time",
-            "titles": "time",
-            "dc:description": "Start time of the screening",
-            "datatype": "time",
-            "required": true,
-            "propertyUrl": "https://schema.org/startTime"
-          },
-          {
-            "@type": "Column",
-            "name": "language",
-            "titles": "language",
-            "dc:description": "Language of the screening",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "https://schema.org/inLanguage"
-          },
-          {
-            "@type": "Column",
-            "name": "movieID",
-            "titles": "movieID",
-            "dc:description": "Identifier of the screened movie",
-            "datatype": "string",
-            "required": true,
-            "aboutUrl": "https://example.org/movie/{movieID}",
-            "propertyUrl": "https://example.org/vocab/screens",
-            "valueUrl": "https://example.org/screening/{screeningID}"
-          },
-          {
-            "@type": "Column",
             "name": "cinemaID",
-            "titles": "cinemaID",
-            "dc:description": "Identifier of the cinema",
             "datatype": "string",
-            "required": true,
-            "aboutUrl": "https://example.org/cinema/{cinemaID}",
-            "propertyUrl": "https://example.org/vocab/hostsScreening",
-            "valueUrl": "https://example.org/screening/{screeningID}"
-          }
-        ],
-        "primaryKey": "screeningID",
-        "foreignKeys": [
-          {
-            "columnReference": "movieID",
-            "reference": {
-              "resource": "Movie.csv",
-              "columnReference": "movieID"
-            }
-          },
-          {
-            "columnReference": "cinemaID",
-            "reference": {
-              "resource": "Cinema.csv",
-              "columnReference": "cinemaID"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "Table",
-      "@id": "https://example.org/movies/CinemaPhone",
-      "url": "CinemaPhone.csv",
-      "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/cinema/{cinemaID}",
-        "columns": [
-          {
-            "@type": "Column",
-            "name": "cinemaID",
-            "titles": "cinemaID",
-            "dc:description": "Identifier of the cinema",
-            "datatype": "string",
-            "required": true,
             "suppressOutput": true
           },
           {
-            "@type": "Column",
             "name": "phoneIRI",
-            "titles": "phoneIRI",
-            "dc:description": "Telephone IRI for the cinema",
             "datatype": "anyURI",
-            "required": true,
-            "propertyUrl": "https://xmlns.com/foaf/0.1/phone",
+            "propertyUrl": "http://example.org/vocabulary/phone",
             "valueUrl": "{phoneIRI}"
           }
         ],
@@ -507,91 +161,297 @@
         ],
         "foreignKeys": [
           {
-            "columnReference": "cinemaID",
+            "columns": "cinemaID",
             "reference": {
-              "resource": "Cinema.csv",
-              "columnReference": "cinemaID"
+              "resource": "data-3.csv",
+              "columns": "cinemaID"
             }
           }
         ]
       }
     },
     {
-      "@type": "Table",
-      "@id": "https://example.org/movies/Country",
-      "url": "Country.csv",
+      "url": "data-5.csv",
       "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/country/{code}",
+        "aboutUrl": "https://data.example.org/person/{personID}",
         "columns": [
           {
-            "@type": "Column",
-            "name": "code",
-            "titles": "code",
-            "dc:description": "Country code (2–3 letter)",
+            "name": "personID",
             "datatype": "string",
-            "required": true,
-            "propertyUrl": "rdf:type",
-            "valueUrl": "https://schema.org/Country"
-          },
-          {
-            "@type": "Column",
-            "name": "name",
-            "titles": "name",
-            "dc:description": "Country name",
-            "datatype": "string",
-            "required": true,
-            "propertyUrl": "https://schema.org/name"
-          }
-        ],
-        "primaryKey": "code"
-      }
-    },
-    {
-      "@type": "Table",
-      "@id": "https://example.org/movies/ActsIn",
-      "url": "ActsIn.csv",
-      "tableSchema": {
-        "@type": "Schema",
-        "aboutUrl": "https://example.org/movie/{movieID}",
-        "columns": [
-          {
-            "@type": "Column",
-            "name": "movieID",
-            "titles": "movieID",
-            "dc:description": "Identifier of the movie",
-            "datatype": "string",
-            "required": true,
             "suppressOutput": true
           },
           {
-            "@type": "Column",
-            "name": "actorID",
-            "titles": "actorID",
-            "dc:description": "Identifier of the actor",
+            "name": "fullName",
+            "datatype": {
+              "base": "string",
+              "lang": "en"
+            },
+            "propertyUrl": "http://xmlns.com/foaf/0.1/name"
+          },
+          {
+            "name": "birthDate",
+            "datatype": "date",
+            "propertyUrl": "http://example.org/vocabulary/birthDate"
+          },
+          {
+            "name": "countryCode",
             "datatype": "string",
-            "required": true,
-            "propertyUrl": "https://example.org/vocab/hasActor",
-            "valueUrl": "https://example.org/actor/{actorID}"
+            "propertyUrl": "http://example.org/vocabulary/bornIn",
+            "valueUrl": "https://data.example.org/country/{countryCode}"
           }
         ],
-        "primaryKey": [
-          "movieID",
-          "actorID"
-        ],
+        "primaryKey": "personID",
         "foreignKeys": [
           {
-            "columnReference": "movieID",
+            "columns": "countryCode",
             "reference": {
-              "resource": "Movie.csv",
-              "columnReference": "movieID"
+              "resource": "data-1.csv",
+              "columns": "code"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "data-6.csv",
+      "tableSchema": {
+        "aboutUrl": "https://data.example.org/person/{directorID}",
+        "columns": [
+          {
+            "name": "directorID",
+            "datatype": "string",
+            "suppressOutput": true
+          },
+          {
+            "name": "activeSince",
+            "datatype": "gYear",
+            "propertyUrl": "http://example.org/vocabulary/activeSince"
+          },
+          {
+            "name": "awardsCount",
+            "datatype": "integer",
+            "propertyUrl": "http://example.org/vocabulary/awardsCount"
+          },
+          {
+            "virtual": true,
+            "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "valueUrl": "http://example.org/vocabulary/Director"
+          }
+        ],
+        "primaryKey": "directorID",
+        "foreignKeys": [
+          {
+            "columns": "directorID",
+            "reference": {
+              "resource": "data-5.csv",
+              "columns": "personID"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "data-7.csv",
+      "tableSchema": {
+        "aboutUrl": "https://data.example.org/person/{actorID}",
+        "columns": [
+          {
+            "name": "actorID",
+            "datatype": "string",
+            "suppressOutput": true
+          },
+          {
+            "name": "stageName",
+            "datatype": {
+              "base": "string",
+              "lang": "en"
+            },
+            "propertyUrl": "http://example.org/vocabulary/stageName"
+          },
+          {
+            "name": "debutYear",
+            "datatype": "gYear",
+            "propertyUrl": "http://example.org/vocabulary/debutYear"
+          },
+          {
+            "virtual": true,
+            "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "valueUrl": "http://example.org/vocabulary/Actor"
+          }
+        ],
+        "primaryKey": "actorID",
+        "foreignKeys": [
+          {
+            "columns": "actorID",
+            "reference": {
+              "resource": "data-5.csv",
+              "columns": "personID"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "data-8.csv",
+      "tableSchema": {
+        "aboutUrl": "https://data.example.org/movie/{movieID}",
+        "columns": [
+          {
+            "name": "movieID",
+            "datatype": "string",
+            "suppressOutput": true
+          },
+          {
+            "name": "title",
+            "datatype": {
+              "base": "string",
+              "lang": "en"
+            },
+            "propertyUrl": "http://purl.org/dc/terms/title"
+          },
+          {
+            "name": "durationMinutes",
+            "datatype": "integer",
+            "propertyUrl": "http://example.org/vocabulary/durationMinutes"
+          },
+          {
+            "name": "releaseDate",
+            "datatype": "date",
+            "propertyUrl": "http://example.org/vocabulary/releaseDate"
+          },
+          {
+            "name": "directorID",
+            "datatype": "string",
+            "propertyUrl": "http://example.org/vocabulary/directedBy",
+            "valueUrl": "https://data.example.org/person/{directorID}"
+          },
+          {
+            "name": "studioID",
+            "datatype": "string",
+            "propertyUrl": "http://example.org/vocabulary/producedBy",
+            "valueUrl": "https://data.example.org/studio/{studioID}"
+          },
+          {
+            "virtual": true,
+            "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "valueUrl": "http://example.org/vocabulary/Movie"
+          }
+        ],
+        "primaryKey": "movieID",
+        "foreignKeys": [
+          {
+            "columns": "directorID",
+            "reference": {
+              "resource": "data-6.csv",
+              "columns": "directorID"
             }
           },
           {
-            "columnReference": "actorID",
+            "columns": "studioID",
             "reference": {
-              "resource": "Actor.csv",
-              "columnReference": "actorID"
+              "resource": "data-2.csv",
+              "columns": "studioID"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "data-9.csv",
+      "tableSchema": {
+        "aboutUrl": "https://data.example.org/screening/{screeningID}",
+        "columns": [
+          {
+            "name": "screeningID",
+            "datatype": "string",
+            "suppressOutput": true
+          },
+          {
+            "name": "movieID",
+            "datatype": "string",
+            "propertyUrl": "http://example.org/vocabulary/shows",
+            "valueUrl": "https://data.example.org/movie/{movieID}"
+          },
+          {
+            "name": "cinemaID",
+            "datatype": "string",
+            "propertyUrl": "http://example.org/vocabulary/takesPlaceAt",
+            "valueUrl": "https://data.example.org/cinema/{cinemaID}"
+          },
+          {
+            "name": "screeningDate",
+            "datatype": "date",
+            "propertyUrl": "http://example.org/vocabulary/screeningDate"
+          },
+          {
+            "name": "screeningTime",
+            "datatype": "time",
+            "propertyUrl": "http://example.org/vocabulary/screeningTime"
+          },
+          {
+            "name": "language",
+            "datatype": "language",
+            "propertyUrl": "http://purl.org/dc/terms/language"
+          },
+          {
+            "virtual": true,
+            "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "valueUrl": "http://example.org/vocabulary/Screening"
+          }
+        ],
+        "primaryKey": "screeningID",
+        "foreignKeys": [
+          {
+            "columns": "movieID",
+            "reference": {
+              "resource": "data-8.csv",
+              "columns": "movieID"
+            }
+          },
+          {
+            "columns": "cinemaID",
+            "reference": {
+              "resource": "data-3.csv",
+              "columns": "cinemaID"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "data-10.csv",
+      "tableSchema": {
+        "aboutUrl": "https://data.example.org/person/{actorID}",
+        "columns": [
+          {
+            "name": "actorID",
+            "datatype": "string",
+            "suppressOutput": true
+          },
+          {
+            "name": "movieID",
+            "datatype": "string",
+            "propertyUrl": "http://example.org/vocabulary/actedIn",
+            "valueUrl": "https://data.example.org/movie/{movieID}"
+          }
+        ],
+        "primaryKey": [
+          "actorID",
+          "movieID"
+        ],
+        "foreignKeys": [
+          {
+            "columns": "actorID",
+            "reference": {
+              "resource": "data-7.csv",
+              "columns": "actorID"
+            }
+          },
+          {
+            "columns": "movieID",
+            "reference": {
+              "resource": "data-8.csv",
+              "columns": "movieID"
             }
           }
         ]
